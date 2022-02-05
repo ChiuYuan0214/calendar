@@ -79,7 +79,7 @@ const MemoForm: React.FC<{
     const desc = descRef.current!.value;
     const level = levelRef.current!.value;
     const tag = tagRef.current!.value;
-  
+
     const dateObj = new Date(dateRef.current!.value);
     const year = +dateObj.getFullYear().toString();
     const month = +dateObj.getMonth().toString() + 1;
@@ -105,6 +105,7 @@ const MemoForm: React.FC<{
     descRef.current!.value = "";
     levelRef.current!.value = "";
     tagRef.current!.value = "";
+    onClose();
   };
   return (
     <form className={styles.form} onSubmit={submitHandler}>
@@ -137,11 +138,23 @@ const MemoForm: React.FC<{
       <div className={styles.timeControl}>
         <div className={styles.control}>
           <label htmlFor="date">Date</label>
-          <input id="date" type="date" name="date" ref={dateRef} onChange={dateChangeHandler} />
+          <input
+            id="date"
+            type="date"
+            name="date"
+            ref={dateRef}
+            onChange={dateChangeHandler}
+          />
         </div>
         <div className={styles.control}>
           <label htmlFor="alert">Alert Time</label>
-          <input id="alert" type="date" name="alert" ref={alertTimeRef} onChange={alertChangeHandler} />
+          <input
+            id="alert"
+            type="date"
+            name="alert"
+            ref={alertTimeRef}
+            onChange={alertChangeHandler}
+          />
         </div>
       </div>
       <div className={styles.actions}>

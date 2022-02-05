@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Task } from "../../../../models/Task";
+import StringReducer from "../../../UI/StringReducer/StringReducer";
 
 import styles from "./TaskContent.module.css";
 
@@ -20,7 +21,7 @@ const TaskContent: React.FC<{ task: Task; index: number }> = ({
   return (
     <li className={styles.task} style={itemStyle} id={id}>
       <h4>{title}</h4>
-      <p>{desc}</p>
+      <p><StringReducer string={desc} /></p>
     </li>
   );
 };
