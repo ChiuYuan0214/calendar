@@ -1,0 +1,17 @@
+.task {
+    color: white;
+    font-size: .5rem;
+    border-radius: 4px;
+    /* opacity: .9; */
+    padding: .2rem;
+}
+
+.task:not(:last-of-type) {
+    margin-bottom: .1rem;
+}
+
+.task h4,
+.task p {
+    margin: 0;
+    /* color: rgb(243, 61, 61); */
+}

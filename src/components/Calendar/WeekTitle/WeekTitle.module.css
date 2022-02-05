@@ -1,0 +1,23 @@
+.titleBar {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 1rem 1rem 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.titleBar h3 {
+    font-family: monospace;
+    margin: 0;
+    text-align: center;
+    padding: .75rem .5rem;
+}
+
+.titleBar li:first-of-type {
+    border-radius: 25px 0 0 25px;
+}
+
+.titleBar li:last-of-type {
+    border-radius: 0 25px 25px 0;
+}

@@ -1,0 +1,14 @@
+.container {
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid rgb(42, 40, 40);
+    background-color: rgb(42, 40, 40);
+    margin: 1rem 2rem;
+}
+
+.container > ul:not(:first-of-type) {
+    padding: .5rem 1rem 1rem;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+}

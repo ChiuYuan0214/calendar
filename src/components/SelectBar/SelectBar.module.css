@@ -1,0 +1,77 @@
+.bar {
+  padding: 1rem;
+  margin: 0;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions button {
+  padding: .5rem 1rem;
+  margin : 0 0 0 2rem;
+  width: 8rem;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgb(163, 93, 228);
+  color:rgb(98, 11, 179);
+  opacity: 0.7;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.actions button:last-of-type {
+  background-color:rgb(218, 108, 108);
+  color:rgb(129, 9, 9);
+  margin-left: 1rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  opacity: 1;
+}
+
+.controls {
+  display: flex;
+  background-color: rgb(32, 32, 32);
+  padding: 0.75rem 2rem;
+  margin: 0 2rem;
+  border-radius: 4px;
+}
+
+.inputControl {
+  display: flex;
+}
+
+.inputControl:first-of-type {
+  margin-right: 1rem;
+}
+
+.inputControl label,
+.inputControl input {
+  display: block;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.inputControl label {
+  color: white;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+.inputControl input {
+  font-weight: bold;
+  width: 7rem;
+  text-align: center;
+}
+
+.inputControl:last-of-type input {
+    width: 4rem;
+}
