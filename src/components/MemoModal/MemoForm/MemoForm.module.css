@@ -44,14 +44,14 @@
 
 .dblControl .control {
   flex-direction: row;
-  /* width: 30%; */
 }
 
 .dblControl label {
   margin: 0 .5rem 0 0;
 }
 
-.dblControl input {
+.dblControl input,
+.dblControl select {
   width: 5rem;
 }
 

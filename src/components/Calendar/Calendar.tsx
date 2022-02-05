@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import { TasksContext } from "../../store/tasks-context";
 import { createCalendar } from "../../lib/date";
 import { getCalendarTable } from "../../lib/date";
 
-import CalendarRow from './CalendarRow/CalendarRow';
+import CalendarRow from "./CalendarRow/CalendarRow";
 import WeekTitle from "./WeekTitle/WeekTitle";
+import TimeLine from "./TimeLine/TimeLine";
 
 import styles from "./Calendar.module.css";
 
@@ -17,9 +18,22 @@ const Calendar: React.FC<{
   const targetTasks = ctx.tasks.filter(
     (task) => task.year === year && task.month === month
   );
+  const [expandWeek, setExpandWeek] = useState<number | null>(null);
 
   const { startDay, length } = createCalendar(year, month);
   const table = getCalendarTable(startDay, length);
+
+  const expandWeekHandler = (row: number | null) => {
+    setExpandWeek(row);
+  };
+
+  const resetExpandHandler = useCallback(() => {
+    setExpandWeek(null);
+  }, []);
+
+  useEffect(() => {
+    resetExpandHandler();
+  }, [year, month, resetExpandHandler]);
 
   const content = table.map((row, index) => {
     if (row.length === 0) {
@@ -31,13 +45,32 @@ const Calendar: React.FC<{
       (task) => range[0] <= task.date && task.date <= range[1]
     );
 
-    return <CalendarRow key={index} boxRow={row} taskRow={taskRow} />;
+    return (
+      <CalendarRow
+        key={index}
+        index={index}
+        expandWeek={expandWeek}
+        setExpand={expandWeekHandler}
+        boxRow={row}
+        taskRow={taskRow}
+      />
+    );
   });
 
   return (
     <section className={styles.container}>
-      <WeekTitle />
-      <ul>{content}</ul>
+      <div className={styles.titleBox}>
+        {expandWeek !== null && (
+          <div className={styles.back} onClick={resetExpandHandler}>
+            Back
+          </div>
+        )}
+        <WeekTitle isExpand={expandWeek !== null} />
+      </div>
+      <div className={styles.calendarBox}>
+        {expandWeek !== null && <TimeLine />}
+        <ul>{content}</ul>
+      </div>
     </section>
   );
 };

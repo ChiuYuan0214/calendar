@@ -1,0 +1,16 @@
+.timeline {
+  height: 36rem;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+.timeline span {
+  display: block;
+  color: white;
+  position: absolute;
+  font-size: .5rem; 
+  font-weight: bold;
+}

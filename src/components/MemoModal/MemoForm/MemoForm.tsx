@@ -26,7 +26,7 @@ const MemoForm: React.FC<{
 
   const titleRef: RefObject<HTMLInputElement> = useRef(null);
   const descRef: RefObject<HTMLTextAreaElement> = useRef(null);
-  const levelRef: RefObject<HTMLInputElement> = useRef(null);
+  const levelRef: RefObject<HTMLSelectElement> = useRef(null);
   const tagRef: RefObject<HTMLInputElement> = useRef(null);
   const alertTimeRef: RefObject<HTMLInputElement> = useRef(null);
   const dateRef: RefObject<HTMLInputElement> = useRef(null);
@@ -120,15 +120,13 @@ const MemoForm: React.FC<{
       <div className={styles.dblControl}>
         <div className={styles.control}>
           <label htmlFor="level">Task Level</label>
-          <input
-            id="level"
-            type="number"
-            name="level"
-            min="1"
-            max="5"
-            step="1"
-            ref={levelRef}
-          />
+          <select id="level" name="level" ref={levelRef}>
+            <option value="1">Easy</option>
+            <option value="2">Normal</option>
+            <option value="3">Important</option>
+            <option value="4">Super Important</option>
+            <option value="5">Hell</option>
+          </select>
         </div>
         <div className={styles.control}>
           <label htmlFor="tag">Tag</label>

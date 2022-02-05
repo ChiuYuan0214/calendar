@@ -5,10 +5,11 @@ import { Task, TaskBox } from "../../../models/Task";
 import styles from "./CalendarBox.module.css";
 import TaskContent from "./Task/TaskContent";
 
-const CalendarBox: React.FC<{ index: number; tasks: Task[]; boxData: TaskBox }> = ({
+const CalendarBox: React.FC<{ index: number; tasks: Task[]; boxData: TaskBox; isExpand: boolean }> = ({
   index,
   tasks,
   boxData,
+  isExpand
 }) => {
     const date = boxData.date ? boxData.date : '';
 
