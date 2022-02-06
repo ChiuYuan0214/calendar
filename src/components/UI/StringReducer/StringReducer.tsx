@@ -1,17 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import styles from "./StringReducer.module.css";
 
-import styles from './StringReducer.module.css';
+let initial = true;
 
-const StringReducer: React.FC<{ string: string }> = ({ string }) => {
+const StringReducer: React.FC<{ string: string; enlarge: boolean; onModal: boolean; }> = ({
+  string,
+  enlarge = false,
+  onModal = false,
+}) => {
+  const [fadeIndex, setFadeIndex] = useState(0);
+
   let stringArr = string.split("");
-  if (stringArr.length > 20) {
+
+  if (enlarge && stringArr.length > 60) {
+    stringArr = stringArr.splice(0, 55);
+    stringArr = stringArr.concat("...".split(""));
+  }
+  if (!enlarge && stringArr.length > 20) {
     stringArr = stringArr.splice(0, 15);
     stringArr = stringArr.concat("...".split(""));
   }
 
+  stringArr = onModal ? string.split("") : stringArr;
+
+  useEffect(() => {
+    if (initial) {
+      initial = false;
+      return;
+    }
+    if (enlarge) {
+      setFadeIndex(15);
+    } else {
+      setFadeIndex(0);
+    }
+  }, [enlarge]);
+
   const content = stringArr.map((char, index) => (
-    <span key={index} className={styles.fadeIn} style={{animationDelay: `${50 * index}ms`}}>{char}</span>
+    <span
+      key={index}
+      className={styles.fadeIn}
+      style={
+        index >= fadeIndex && !onModal
+          ? { animationDelay: `${30 * (index - fadeIndex)}ms` }
+          : {}
+      }
+    >
+      {char}
+    </span>
   ));
 
   return <>{content}</>;

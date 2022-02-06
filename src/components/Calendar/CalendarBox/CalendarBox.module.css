@@ -23,7 +23,6 @@
 }
 
 .weekendBox {
-  /* border: 1px solid rgb(165, 164, 164); */
   background-color: rgb(251, 228, 153);
 }
 
@@ -33,6 +32,10 @@
 
 .empty {
   background-color: rgb(209, 208, 208);
+}
+
+.onDrop {
+  background-color: pink;
 }
 
 .box ul {

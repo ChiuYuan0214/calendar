@@ -1,8 +1,11 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 
 import { Task, TaskBox } from "../../../models/Task";
 import CalendarBox from "../CalendarBox/CalendarBox";
 import styles from "./CalendarRow.module.css";
+
+const indexTracker: (number | null)[] = [];
 
 const CalendarRow: React.FC<{
   expandWeek: number | null;
@@ -14,8 +17,11 @@ const CalendarRow: React.FC<{
   const rowIndex = index;
   const isExpand = expandWeek === rowIndex;
 
-  if (expandWeek !== rowIndex && expandWeek !== null) {
-    return null;
+  if (indexTracker.length > 5) {
+    indexTracker.splice(0, 4);
+  }
+  if (indexTracker[indexTracker.length - 1] !== expandWeek) {
+    indexTracker.push(expandWeek);
   }
 
   const expandHandler = () => {
@@ -37,13 +43,47 @@ const CalendarRow: React.FC<{
       />
     );
   });
+
+  const animationTiming = {
+    enter: 500,
+    exit: 500,
+  };
+
+  const prevExpand =
+    indexTracker.length === 1
+      ? false
+      : indexTracker[indexTracker.length - 2] === rowIndex;
+
+  console.log(`${rowIndex}'s indexTracker:`, indexTracker);
+
   return (
-    <ul
-      className={`${styles.row} ${isExpand && styles.isExpand}`}
-      onClick={expandHandler}
+    <CSSTransition
+      in={expandWeek !== null}
+      timeout={animationTiming}
+      classNames={{
+        enter: "",
+        enterActive: isExpand ? "" : styles.shrinkOut,
+        exitActive: prevExpand ? "" : styles.shrinkBack,
+        exitDone: styles.basic,
+        appear: "",
+        appearActive: "",
+      }}
     >
-      {list}
-    </ul>
+      <ul
+        className={`${styles.row} ${
+          expandWeek === null ? styles.basic : isExpand ? styles.isExpand : ""
+        }`}
+        onClick={expandHandler}
+      >
+        <CSSTransition
+          in={isExpand || expandWeek === null}
+          timeout={animationTiming}
+          unmountOnExit
+        >
+          <>{list}</>
+        </CSSTransition>
+      </ul>
+    </CSSTransition>
   );
 };
 

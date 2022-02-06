@@ -1,15 +1,45 @@
-
 .row {
-    padding: 0;
-    margin: 3px 0;
-    list-style-type: none;
-    text-decoration: none;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: 7rem;
-    gap: 3px;
+  padding: 0;
+  margin: 3px 0;
+  list-style-type: none;
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  transition: height 0.5s ease-out;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.basic {
+  height: 7rem;
 }
 
 .isExpand {
-    grid-auto-rows: 36rem;
+  height: 36rem;
+}
+
+.shrinkOut {
+  animation: shrink-out 0.5s ease-out forwards;
+}
+
+.shrinkBack {
+  animation: shrink-back 0.5s ease-out forwards;
+}
+
+@keyframes shrink-out {
+  from {
+    height: 7rem;
+  }
+  to {
+    height: 0rem;
+  }
+}
+
+@keyframes shrink-back {
+  from {
+    height: 0rem;
+  }
+  to {
+    height: 7rem;
+  }
 }

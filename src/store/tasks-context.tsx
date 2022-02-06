@@ -15,7 +15,7 @@ type taskContextObj = {
   ) => void;
   removeTask: (id: string) => void;
   updateTask: (task: Task) => void;
-  changeTask: (task: Task, data: positionData) => void;
+  changeTask: (task: Task | undefined, data: positionData) => void;
 };
 
 export const TasksContext = React.createContext<taskContextObj>({
@@ -32,7 +32,6 @@ const TasksProvider: React.FC = (props) => {
   const addTaskHandler = (
     newTask: Task
   ) => {
-    console.log("newTask in context:", newTask);
     setTasks((prev) => [...prev, newTask]);
   };
 
@@ -52,7 +51,10 @@ const TasksProvider: React.FC = (props) => {
     });
   };
 
-  const changeTaskHandler = (currentTask: Task, newPosition: positionData) => {
+  const changeTaskHandler = (currentTask: Task | undefined, newPosition: positionData) => {
+    if (!currentTask) {
+      return;
+    }
     const { year, month, date } = newPosition;
     const newTask = { ...currentTask, year, month, date };
 

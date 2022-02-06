@@ -61,14 +61,14 @@ const Calendar: React.FC<{
     <section className={styles.container}>
       <div className={styles.titleBox}>
         {expandWeek !== null && (
-          <div className={styles.back} onClick={resetExpandHandler}>
+          <div className={`${styles.back}`} onClick={resetExpandHandler}>
             Back
           </div>
         )}
         <WeekTitle isExpand={expandWeek !== null} />
       </div>
-      <div className={styles.calendarBox}>
-        {expandWeek !== null && <TimeLine />}
+      <div className={`${styles.calendarBox} ${expandWeek !== null ? styles.isExpand : ""}`}>
+        <TimeLine onExpand={expandWeek !== null} />
         <ul>{content}</ul>
       </div>
     </section>

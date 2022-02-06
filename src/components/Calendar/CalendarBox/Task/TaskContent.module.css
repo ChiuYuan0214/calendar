@@ -1,17 +1,38 @@
 .task {
-    color: white;
-    font-size: .5rem;
-    border-radius: 4px;
-    /* opacity: .9; */
-    padding: .2rem;
+  color: white;
+  font-size: 0.5rem;
+  border-radius: 4px;
+  padding: 0.2rem;
+  position: relative;
+}
+
+.onModal {
+  padding: 1rem;
+  position: fixed;
+  z-index: 10;
+  width: 500px;
+  height: 500px;
+  top: calc(50% - 250px);
+  left: calc(50% - 250px);
+  font-size: 1.5rem;
+  animation: fade-in .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .task:not(:last-of-type) {
-    margin-bottom: .1rem;
+  margin-bottom: 0.1rem;
 }
 
 .task h4,
 .task p {
-    margin: 0;
-    /* color: rgb(243, 61, 61); */
+  margin: 0;
 }

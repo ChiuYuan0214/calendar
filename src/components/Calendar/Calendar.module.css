@@ -4,12 +4,13 @@
   border: 1px solid rgb(42, 40, 40);
   background-color: rgb(42, 40, 40);
   margin: 1rem 2rem;
-  padding: 0.3rem;
+  padding: 0.5rem;
 }
 
 .titleBox {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .back {
@@ -22,6 +23,16 @@
   border-radius: 4px;
   padding: 0.5rem 0.2rem 0.5rem 0;
   margin-top: 1rem;
+  animation: widthen 0.5s ease-out;
+}
+
+@keyframes widthen {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3rem;
+  }
 }
 
 .back:hover,
@@ -34,9 +45,14 @@
 }
 
 .calendarBox > ul {
-  padding: 0.5rem;
-  margin: 0;
+  padding: 0;
+  margin: 0.5rem;
   text-decoration: none;
   list-style-type: none;
   width: 100%;
+  transition: width 0.5s ease-out;
+}
+
+.calendarBox.isExpand > ul {
+  width: calc(100% - 3rem);
 }
