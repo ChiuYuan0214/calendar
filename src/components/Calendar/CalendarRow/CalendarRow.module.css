@@ -19,11 +19,11 @@
 }
 
 .shrinkOut {
-  animation: shrink-out 0.5s ease-out forwards;
+  animation: shrink-out 0.5s ease-out;
 }
 
 .shrinkBack {
-  animation: shrink-back 0.5s ease-out forwards;
+  animation: shrink-back 0.5s ease-out;
 }
 
 @keyframes shrink-out {
