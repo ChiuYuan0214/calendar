@@ -1,4 +1,9 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 import { TasksContext } from "../../store/tasks-context";
 import { createCalendar } from "../../lib/date";
@@ -51,6 +56,8 @@ const Calendar: React.FC<{
         index={index}
         expandWeek={expandWeek}
         setExpand={expandWeekHandler}
+        year={year}
+        month={month}
         boxRow={row}
         taskRow={taskRow}
       />
@@ -67,7 +74,11 @@ const Calendar: React.FC<{
         )}
         <WeekTitle isExpand={expandWeek !== null} />
       </div>
-      <div className={`${styles.calendarBox} ${expandWeek !== null ? styles.isExpand : ""}`}>
+      <div
+        className={`${styles.calendarBox} ${
+          expandWeek !== null ? styles.isExpand : ""
+        }`}
+      >
         <TimeLine onExpand={expandWeek !== null} />
         <ul>{content}</ul>
       </div>

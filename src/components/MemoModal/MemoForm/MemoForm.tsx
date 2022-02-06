@@ -18,7 +18,8 @@ const MemoForm: React.FC<{
   onClose: () => void;
   year: number;
   month: number;
-}> = ({ onClose, year, month }) => {
+  date: number;
+}> = ({ onClose, year, month, date }) => {
   const [initial, setInitial] = useState(true);
   const [alertManual, setAlertManual] = useState(false);
 
@@ -31,6 +32,7 @@ const MemoForm: React.FC<{
   const alertTimeRef: RefObject<HTMLInputElement> = useRef(null);
   const dateRef: RefObject<HTMLInputElement> = useRef(null);
 
+  // function scope
   const dateChangeHandler = useCallback(() => {
     if (alertManual) {
       return;
@@ -53,6 +55,7 @@ const MemoForm: React.FC<{
       monthSmaller ? "0" : ""
     }${alertMonth}-${dateSmaller ? "0" : ""}${alertDate}`;
   }, [alertManual]);
+  // function end
 
   const alertChangeHandler = () => {
     if (alertManual) {
@@ -64,10 +67,12 @@ const MemoForm: React.FC<{
   useEffect(() => {
     if (initial) {
       const smaller = month < 10;
-      dateRef.current!.value = `${year}-${smaller && "0"}${month}-01`;
+      dateRef.current!.value = `${year}-${smaller ? "0" : ""}${month}-${
+        date < 10 ? "0" : ""
+      }${date}`;
       setInitial(false);
     }
-  }, [year, month, initial]);
+  }, [year, month, date, initial]);
 
   useEffect(() => {
     dateChangeHandler();
@@ -86,9 +91,7 @@ const MemoForm: React.FC<{
     const date = +dateObj.getDate().toString();
 
     const alertObj = new Date(alertTimeRef.current!.value);
-    const alertTime = Math.floor(
-      (alertObj.getTime() - dateObj.getTime()) / 1000 / 60 / 60 / 24
-    );
+    const alertTime = alertObj.getTime();
     const newTask = new Task(
       title,
       desc,

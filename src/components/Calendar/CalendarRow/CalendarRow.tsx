@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import { Task, TaskBox } from "../../../models/Task";
@@ -8,15 +8,18 @@ import styles from "./CalendarRow.module.css";
 const CalendarRow: React.FC<{
   expandWeek: number | null;
   setExpand: (row: number | null) => void;
+  year: number;
+  month: number;
   boxRow: TaskBox[];
   taskRow: Task[];
   index: number;
-}> = ({ boxRow, taskRow, index, expandWeek, setExpand }) => {
+}> = ({ year, month, boxRow, taskRow, index, expandWeek, setExpand }) => {
   const rowIndex = index;
   const isExpand = expandWeek === rowIndex;
 
-  const expandHandler = () => {
-    if (isExpand) {
+  const expandHandler = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (isExpand || target.closest("li") || target.closest("#modal-root")) {
       return;
     }
     setExpand(rowIndex);
@@ -30,6 +33,8 @@ const CalendarRow: React.FC<{
         index={index}
         isExpand={isExpand}
         tasks={tasks}
+        year={year}
+        month={month}
         boxData={box}
       />
     );

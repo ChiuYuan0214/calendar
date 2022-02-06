@@ -1,9 +1,8 @@
-import React, { useState, DragEvent } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, DragEvent, MouseEvent } from "react";
 
+import TaskModal from "../TaskModal/TaskModal";
 import { Task } from "../../../../models/Task";
 import StringReducer from "../../../UI/StringReducer/StringReducer";
-import BackDrop from "../../../UI/StringReducer/BackDrop/BackDrop";
 
 import styles from "./TaskContent.module.css";
 
@@ -17,27 +16,20 @@ const TaskContent: React.FC<{
   const { title, desc, level, id } = task;
   // console.log("index:", index);
 
+
+  const modalToggleHandler = () => {
+    setOnModal(prev => !prev);
+  };
+
+  const modalOpenHandler = (event: MouseEvent<HTMLElement>) => {
+    setOnModal(true);
+  };
+
   const itemStyle = {
     backgroundColor: `rgb(${180 + +level * 10}, ${140 - +level * 20}, ${
       140 - +level * 20
     })`,
   };
-
-  // const ModalContent: React.FC = () => {
-  //   return (
-  //     <>
-  //       <h4>Level:</h4>
-  //       <p>{level}</p>
-  //       <p>
-  //         {year}/{month}/{date}
-  //       </p>
-  //       <h4>Alert Time:</h4>
-  //       <p>{alertTime}</p>
-  //       <h4>Tag:</h4>
-  //       <p>{tag}</p>
-  //     </>
-  //   );
-  // };
 
   const dragStartHandler = (event: DragEvent<HTMLLIElement>) => {
     event.dataTransfer.setData("text/plain", id);
@@ -50,28 +42,23 @@ const TaskContent: React.FC<{
     }
   };
 
-  const portal: Element | null = document.getElementById("modal-root");
+  
 
   return (
     <>
-      {onModal &&
-        portal &&
-        ReactDOM.createPortal(
-          <BackDrop onClick={() => setOnModal(false)} />,
-          portal
-        )}
+      {onModal && <TaskModal onClick={modalToggleHandler} task={task} />}
       <li
-        className={`${styles.task} ${onModal ? styles.onModal : ""}`}
+        className={styles.task}
         style={itemStyle}
         id={id}
-        onDoubleClick={() => setOnModal(true)}
+        onDoubleClick={modalOpenHandler}
         draggable="true"
         onDragStart={dragStartHandler}
         onDragEnd={dragEndHandler}
       >
         <h4>{title}</h4>
         <p>
-          <StringReducer string={desc} enlarge={isExpand} onModal={onModal} />
+          <StringReducer string={desc} enlarge={isExpand} />
         </p>
       </li>
     </>

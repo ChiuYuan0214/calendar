@@ -1,0 +1,101 @@
+.card {
+  width: 400px;
+  height: 400px;
+  position: fixed;
+  z-index: 10;
+  top: calc(50% - 200px);
+  left: calc(50% - 200px);
+  border-radius: 12px;
+  background-color: rgb(78, 37, 37);
+  color: white;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h4 {
+  color: rgb(218, 185, 1);
+}
+
+.control {
+  margin: 0 1rem 1rem;
+}
+
+.control:first-of-type {
+  margin: 1rem 1rem .5rem;
+}
+
+.control h4,
+.control p {
+  margin: 0.3rem 0;
+}
+
+.control textarea {
+  width: 100%;
+}
+
+.mark {
+  display: flex;
+  margin: 0.5rem 1rem;
+}
+
+.mark h4 {
+  margin: 0;
+}
+
+.mark p {
+  margin: 0 0 0 1rem;
+}
+
+.control input,
+.control textarea,
+.mark input {
+  display: block;
+  background-color: rgb(218, 185, 1);
+  border: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-radius: 2px;
+}
+
+.mark input {
+  margin-left: 1rem;
+  width: 3rem;
+}
+
+.mark input[type="date"] {
+  width: 10rem;
+  font-size: 0.7rem;
+}
+
+.mark:last-of-type input {
+  width: 6rem;
+}
+
+.control input:focus,
+.control textarea:focus,
+.mark input:focus {
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  align-items: baseline;
+  margin-top: auto;
+}
+
+.actions button {
+  margin: auto 1rem 1rem auto;
+  color:rgb(78, 37, 37);
+  border: 1px solid rgb(78, 37, 37);
+  border-radius: 4px;
+  padding: .2rem .5rem;
+  font-weight: bold;
+}
+
+.actions button:hover {
+    background-color: rgb(195, 5, 5);
+    border-color:rgb(195, 5, 5);
+    color: white;
+    transition: all .2s;
+}

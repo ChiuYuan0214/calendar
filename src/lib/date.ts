@@ -130,4 +130,3 @@ export const getCalendarTable = (startDay: number, length: number) => {
 
   return calendar;
 };
-

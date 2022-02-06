@@ -4,11 +4,10 @@ import styles from "./StringReducer.module.css";
 
 let initial = true;
 
-const StringReducer: React.FC<{ string: string; enlarge: boolean; onModal: boolean; }> = ({
-  string,
-  enlarge = false,
-  onModal = false,
-}) => {
+const StringReducer: React.FC<{
+  string: string;
+  enlarge: boolean;
+}> = ({ string, enlarge = false }) => {
   const [fadeIndex, setFadeIndex] = useState(0);
 
   let stringArr = string.split("");
@@ -21,8 +20,6 @@ const StringReducer: React.FC<{ string: string; enlarge: boolean; onModal: boole
     stringArr = stringArr.splice(0, 15);
     stringArr = stringArr.concat("...".split(""));
   }
-
-  stringArr = onModal ? string.split("") : stringArr;
 
   useEffect(() => {
     if (initial) {
@@ -41,7 +38,7 @@ const StringReducer: React.FC<{ string: string; enlarge: boolean; onModal: boole
       key={index}
       className={styles.fadeIn}
       style={
-        index >= fadeIndex && !onModal
+        index >= fadeIndex
           ? { animationDelay: `${30 * (index - fadeIndex)}ms` }
           : {}
       }

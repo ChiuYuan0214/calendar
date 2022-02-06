@@ -51,7 +51,12 @@ const SelectBar: React.FC<{
         <button onClick={memoModalToggleHandler}>Add Memo</button>
       </div>
       {addMemo && (
-        <MemoModal onClick={memoModalToggleHandler} year={year} month={month} />
+        <MemoModal
+          onClick={memoModalToggleHandler}
+          year={year}
+          month={month}
+          date={1}
+        />
       )}
       <div className={styles.controls}>
         <div className={styles.inputControl}>
