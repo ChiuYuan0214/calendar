@@ -18,7 +18,7 @@
 }
 
 .control {
-  margin: 0 1rem 1rem;
+  margin: 0 1rem .5rem;
 }
 
 .control:first-of-type {
@@ -34,9 +34,15 @@
   width: 100%;
 }
 
+.control p,
+.control textarea {
+  max-height: 8rem;
+  overflow: auto;
+}
+
 .mark {
   display: flex;
-  margin: 0.5rem 1rem;
+  margin: 0.3rem 1rem;
 }
 
 .mark h4 {
@@ -45,36 +51,39 @@
 
 .mark p {
   margin: 0 0 0 1rem;
+  min-width: 3rem;
+}
+
+.level {
+  width: 4rem;
+}
+
+.tag {
+  width: 7rem;
+}
+
+.mark input {
+  width: 8rem;
+  font-size: 0.7rem;
 }
 
 .control input,
 .control textarea,
-.mark input {
+.mark input, 
+.mark select {
   display: block;
   background-color: rgb(218, 185, 1);
   border: none;
   font-weight: bold;
   font-size: 0.8rem;
   border-radius: 2px;
-}
-
-.mark input {
   margin-left: 1rem;
-  width: 3rem;
-}
-
-.mark input[type="date"] {
-  width: 10rem;
-  font-size: 0.7rem;
-}
-
-.mark:last-of-type input {
-  width: 6rem;
 }
 
 .control input:focus,
 .control textarea:focus,
-.mark input:focus {
+.mark input:focus,
+.mark select:focus {
   outline: none;
 }
 

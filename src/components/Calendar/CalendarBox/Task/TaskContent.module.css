@@ -19,6 +19,26 @@
   animation-fill-mode: forwards;
 }
 
+.work {
+  background-color: rgb(148, 6, 6);
+}
+
+.family {
+  background-color:rgb(6, 111, 121);
+}
+
+.friends {
+  background-color:rgb(121, 6, 115);
+}
+
+.entertainment {
+  background-color:rgb(105, 2, 37);
+}
+
+.learning {
+  background-color: rgb(12, 153, 87);
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

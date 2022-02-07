@@ -23,8 +23,8 @@ const Calendar: React.FC<{
   const targetTasks = ctx.tasks.filter(
     (task) => task.year === year && task.month === month
   );
+  
   const [expandWeek, setExpandWeek] = useState<number | null>(null);
-
   const { startDay, length } = createCalendar(year, month);
   const table = getCalendarTable(startDay, length);
 

@@ -10,9 +10,7 @@ type positionData = {
 
 type taskContextObj = {
   tasks: Task[];
-  addTask: (
-    newTask:Task
-  ) => void;
+  addTask: (newTask: Task) => void;
   removeTask: (id: string) => void;
   updateTask: (task: Task) => void;
   changeTask: (task: Task | undefined, data: positionData) => void;
@@ -29,9 +27,7 @@ export const TasksContext = React.createContext<taskContextObj>({
 const TasksProvider: React.FC = (props) => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTaskHandler = (
-    newTask: Task
-  ) => {
+  const addTaskHandler = (newTask: Task) => {
     setTasks((prev) => [...prev, newTask]);
   };
 
@@ -42,8 +38,8 @@ const TasksProvider: React.FC = (props) => {
   const updateTaskHandler = (newTask: Task) => {
     setTasks((prev) => {
       const targetIndex = prev.findIndex((task) => task.id === newTask.id);
-      const newId = new Date().getTime().toString();
-      const task = { ...newTask, id: newId };
+      // const newId = new Date().getTime().toString();
+      const task = { ...newTask };
       prev.splice(targetIndex, 1);
       prev.push(task);
 
@@ -51,20 +47,37 @@ const TasksProvider: React.FC = (props) => {
     });
   };
 
-  const changeTaskHandler = (currentTask: Task | undefined, newPosition: positionData) => {
+  const changeTaskHandler = (
+    currentTask: Task | undefined,
+    newPosition: positionData
+  ) => {
     if (!currentTask) {
       return;
     }
     const { year, month, date } = newPosition;
-    const newTask = { ...currentTask, year, month, date };
+
+    const targetIndex = tasks.findIndex((task) => task.id === currentTask.id);
+
+    const targetTask = tasks[targetIndex];
+    const { year: tYear, month: tMonth, date: tDate, alertTime } = targetTask;
+    const timeChange =
+      new Date(
+        `${year}-${month < 10 ? "0" : ""}${month}-${
+          date < 10 ? "0" : ""
+        }${date}`
+      ).getTime() -
+      new Date(
+        `${tYear}-${tMonth < 10 ? "0" : ""}${tMonth}-${
+          tDate < 10 ? "0" : ""
+        }${tDate}`
+      ).getTime();
+
+    const newAlertTime = alertTime + timeChange;
+    const newTask = { ...currentTask, year, month, date, alertTime: newAlertTime };
 
     setTasks((prev) => {
       const newTasks = [...prev];
-      const targetIndex = newTasks.findIndex(
-        (task) => task.id === currentTask.id
-      );
       newTasks[targetIndex] = newTask;
-
       return newTasks;
     });
   };

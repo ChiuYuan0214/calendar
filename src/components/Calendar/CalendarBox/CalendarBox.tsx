@@ -1,4 +1,10 @@
-import React, { useState, DragEvent, useContext, useEffect } from "react";
+import React, {
+  useState,
+  DragEvent,
+  useContext,
+  useEffect,
+  MouseEvent,
+} from "react";
 
 import { Task, TaskBox } from "../../../models/Task";
 import TaskContent from "./Task/TaskContent";
@@ -22,13 +28,6 @@ const CalendarBox: React.FC<{
   const ctx = useContext(TasksContext);
 
   const date = boxData.date ? boxData.date : "";
-
-  let contents;
-  if (tasks.length > 0) {
-    contents = tasks.map((task, index) => (
-      <TaskContent index={index} task={task} isExpand={isExpand} />
-    ));
-  }
 
   const dragEnterHandler = (event: DragEvent<HTMLLIElement>) => {
     if (event.dataTransfer.types[0] === "text/plain" && date !== "") {
@@ -65,8 +64,9 @@ const CalendarBox: React.FC<{
     setDroppable(false);
   };
 
-  const startAddTaskHandler = () => {
-    if (onExpand) {
+  const startAddTaskHandler = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (onExpand || target.closest("li")) {
       return;
     }
     setAddTask(true);
@@ -85,6 +85,13 @@ const CalendarBox: React.FC<{
     }
   }, [isExpand]);
 
+  let contents;
+  if (tasks.length > 0) {
+    contents = tasks.map((task, index) => {
+      return <TaskContent key={index} index={index} task={task} isExpand={isExpand} />
+    });
+  }
+
   return (
     <section
       className={`${styles.box} ${index > 4 && styles.weekendBox} ${
@@ -96,7 +103,14 @@ const CalendarBox: React.FC<{
       onDrop={dropHandler}
       onDoubleClick={startAddTaskHandler}
     >
-      {addTask && <MemoModal onClick={cancelAddTaskHandler} year={year} month={month} date={+date} />}
+      {addTask && (
+        <MemoModal
+          onClick={cancelAddTaskHandler}
+          year={year}
+          month={month}
+          date={+date}
+        />
+      )}
       <h3>{date}</h3>
       <ul>{contents}</ul>
     </section>

@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useReducer, useContext, MouseEvent } from "react";
 import ReactDOM from "react-dom";
 
-import BackDrop from "../../../UI/BackDrop/BackDrop";
-import { Task } from "../../../../models/Task";
-import { TasksContext } from "../../../../store/tasks-context";
+import BackDrop from "../UI/BackDrop/BackDrop";
+import { Task } from "../../models/Task";
+import { TasksContext } from "../../store/tasks-context";
 
 import styles from "./TaskModal.module.css";
 
@@ -38,9 +38,10 @@ const changeReducer = (state: ChangeState, action: { type: string }) => {
   return { ...initialChangeState, [action.type]: true };
 };
 
-const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
+const TaskModal: React.FC<{ task: Task; onClick: () => void; setChange: () => void }> = ({
   task,
   onClick,
+  setChange
 }) => {
   const ctx = useContext(TasksContext);
   const [inputState, dispatchInput] = useReducer(inputReducer, task);
@@ -58,6 +59,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
   const inputChangeHandler = (type: string, event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
     let inputValue = target.value;
+
     if (type === "date") {
       const dateObj = new Date(inputValue);
       const year = dateObj.getFullYear();
@@ -76,21 +78,46 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
     dispatchInput({ type, input: inputValue });
   };
 
+  const startEditHandler = (type: string, event: MouseEvent) => {
+    event.stopPropagation();
+    dispatchChange({ type });
+  };
+
   const blurHandler = () => {
     const updatedState = { ...inputState };
     ctx.updateTask(updatedState);
+    setChange();
   };
 
   const clearFocusHandler = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
-    if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
+    if (
+      target.tagName === "INPUT" ||
+      target.tagName === "TEXTAREA" ||
+      target.tagName === "SELECT"
+    ) {
       return;
     }
-    dispatchChange({type: "clear"});
+    if (target.closest("div")) dispatchChange({ type: "clear" });
   };
 
+  const stopPropagationHandler = (event: MouseEvent) => {
+    event.stopPropagation();
+  };
+
+  const tagText = tag
+    ? tag
+        .split("")
+        .map((char, index) => (index === 0 ? char.toUpperCase() : char))
+        .join("")
+    : "";
+
   const taskContent = (
-    <section className={styles.card} onClick={clearFocusHandler}>
+    <section
+      className={styles.card}
+      onClick={clearFocusHandler}
+      onDoubleClick={stopPropagationHandler}
+    >
       <div className={styles.control}>
         <h4>Title:</h4>
         {changeState.title ? (
@@ -101,7 +128,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
             onBlur={blurHandler}
           />
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "title" })}>{title}</p>
+          <p onDoubleClick={startEditHandler.bind(null, "title")}>{title}</p>
         )}
       </div>
       <div className={styles.control}>
@@ -114,22 +141,28 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
             onBlur={blurHandler}
           ></textarea>
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "desc" })}>{desc}</p>
+          <p onDoubleClick={startEditHandler.bind(null, "desc")}>{desc}</p>
         )}
       </div>
       <div className={styles.mark}>
         <h4>Level:</h4>
         {changeState.level ? (
-          <input
-            type="text"
-            value={level}
-            min="1"
-            max="5"
+          <select
+            className={styles.level}
+            id="level"
+            name="level"
             onChange={inputChangeHandler.bind(null, "level")}
             onBlur={blurHandler}
-          />
+            defaultValue={level}
+          >
+            <option value="1">Easy</option>
+            <option value="2">Normal</option>
+            <option value="3">Important</option>
+            <option value="4">Super Important</option>
+            <option value="5">Hell</option>
+          </select>
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "level" })}>{level}</p>
+          <p onDoubleClick={startEditHandler.bind(null, "level")}>{level}</p>
         )}
       </div>
       <div className={styles.mark}>
@@ -144,7 +177,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
             onBlur={blurHandler}
           />
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "date" })}>
+          <p onDoubleClick={startEditHandler.bind(null, "date")}>
             {year}/{month}/{date}
           </p>
         )}
@@ -161,7 +194,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
             onBlur={blurHandler}
           />
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "alertTime" })}>
+          <p onDoubleClick={startEditHandler.bind(null, "alertTime")}>
             {alertYear}/{alertMonth}/{alertDate}
           </p>
         )}
@@ -169,19 +202,27 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void }> = ({
       <div className={styles.mark}>
         <h4>Tag:</h4>
         {changeState.tag ? (
-          <input
-            type="text"
-            value={tag}
+          <select
+            className={styles.tag}
+            id="tag"
+            name="tag"
             onChange={inputChangeHandler.bind(null, "tag")}
             onBlur={blurHandler}
-          />
+            defaultValue={tag}
+          >
+            <option value="work">Work</option>
+            <option value="family">Family</option>
+            <option value="friends">Friends</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="learning">Learing</option>
+          </select>
         ) : (
-          <p onDoubleClick={() => dispatchChange({ type: "tag" })}>
-            {tag ? tag : "none"}
-          </p>
+          <p onDoubleClick={startEditHandler.bind(null, "tag")}>{tagText}</p>
         )}
       </div>
-      <div className={styles.actions}><button onClick={onClick}>Confirm</button></div>
+      <div className={styles.actions}>
+        <button onClick={onClick}>Confirm</button>
+      </div>
     </section>
   );
 

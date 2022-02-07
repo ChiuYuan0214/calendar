@@ -28,7 +28,7 @@ const MemoForm: React.FC<{
   const titleRef: RefObject<HTMLInputElement> = useRef(null);
   const descRef: RefObject<HTMLTextAreaElement> = useRef(null);
   const levelRef: RefObject<HTMLSelectElement> = useRef(null);
-  const tagRef: RefObject<HTMLInputElement> = useRef(null);
+  const tagRef: RefObject<HTMLSelectElement> = useRef(null);
   const alertTimeRef: RefObject<HTMLInputElement> = useRef(null);
   const dateRef: RefObject<HTMLInputElement> = useRef(null);
 
@@ -133,7 +133,13 @@ const MemoForm: React.FC<{
         </div>
         <div className={styles.control}>
           <label htmlFor="tag">Tag</label>
-          <input id="tag" type="text" name="tag" ref={tagRef} />
+          <select id="tag" name="tag" ref={tagRef}>
+            <option value="work">Work</option>
+            <option value="family">Family</option>
+            <option value="friends">Friends</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="learning">Learing</option>
+          </select>
         </div>
       </div>
       <div className={styles.timeControl}>

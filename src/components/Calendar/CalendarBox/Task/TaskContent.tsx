@@ -1,8 +1,9 @@
-import React, { useState, DragEvent, MouseEvent } from "react";
+import React, { useState, DragEvent, MouseEvent, useContext, useEffect } from "react";
 
-import TaskModal from "../TaskModal/TaskModal";
+import TaskModal from "../../../TaskModal/TaskModal";
 import { Task } from "../../../../models/Task";
 import StringReducer from "../../../UI/StringReducer/StringReducer";
+import { TasksContext } from "../../../../store/tasks-context";
 
 import styles from "./TaskContent.module.css";
 
@@ -12,23 +13,18 @@ const TaskContent: React.FC<{
   isExpand: boolean;
 }> = ({ task, index, isExpand }) => {
   const [onModal, setOnModal] = useState<boolean>(false);
+  const [isChange, setIsChange] = useState<boolean>(false);
+  const [curTask, setCurTask] = useState<Task>(task);
+  const ctx = useContext(TasksContext);
 
-  const { title, desc, level, id } = task;
-  // console.log("index:", index);
-
+  const { title, desc, level, tag, id } = curTask;
 
   const modalToggleHandler = () => {
-    setOnModal(prev => !prev);
+    setOnModal((prev) => !prev);
   };
 
   const modalOpenHandler = (event: MouseEvent<HTMLElement>) => {
     setOnModal(true);
-  };
-
-  const itemStyle = {
-    backgroundColor: `rgb(${180 + +level * 10}, ${140 - +level * 20}, ${
-      140 - +level * 20
-    })`,
   };
 
   const dragStartHandler = (event: DragEvent<HTMLLIElement>) => {
@@ -42,13 +38,35 @@ const TaskContent: React.FC<{
     }
   };
 
-  
+  const setChangeHandler = () => {
+    setIsChange(true);
+  };
+
+  useEffect(() => {
+    if (isChange) {
+      const newTask = ctx.tasks.find(t => t.id === id);
+      if (newTask) {
+        setCurTask(newTask);
+      }
+      setIsChange(false);
+    }
+  }, [isChange, ctx, id]);
+
+  const itemStyle = {
+    opacity: 0.5 + +level * 0.1,
+  };
 
   return (
     <>
-      {onModal && <TaskModal onClick={modalToggleHandler} task={task} />}
+      {onModal && (
+        <TaskModal
+          setChange={setChangeHandler}
+          onClick={modalToggleHandler}
+          task={curTask}
+        />
+      )}
       <li
-        className={styles.task}
+        className={`${styles.task} ${styles[tag]}`}
         style={itemStyle}
         id={id}
         onDoubleClick={modalOpenHandler}
