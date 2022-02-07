@@ -1,11 +1,5 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
-import { TasksContext } from "../../store/tasks-context";
 import { createCalendar } from "../../lib/date";
 import { getCalendarTable } from "../../lib/date";
 
@@ -19,11 +13,6 @@ const Calendar: React.FC<{
   year: number;
   month: number;
 }> = ({ year, month }) => {
-  const ctx = useContext(TasksContext);
-  const targetTasks = ctx.tasks.filter(
-    (task) => task.year === year && task.month === month
-  );
-  
   const [expandWeek, setExpandWeek] = useState<number | null>(null);
   const { startDay, length } = createCalendar(year, month);
   const table = getCalendarTable(startDay, length);
@@ -44,11 +33,6 @@ const Calendar: React.FC<{
     if (row.length === 0) {
       return null;
     }
-    const startDate = row[0].date === 0 ? 1 : row[0].date;
-    const range = [startDate, startDate + 6];
-    const taskRow = targetTasks.filter(
-      (task) => range[0] <= task.date && task.date <= range[1]
-    );
 
     return (
       <CalendarRow
@@ -58,8 +42,7 @@ const Calendar: React.FC<{
         setExpand={expandWeekHandler}
         year={year}
         month={month}
-        boxRow={row}
-        taskRow={taskRow}
+        rowBox={row}
       />
     );
   });

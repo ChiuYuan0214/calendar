@@ -38,7 +38,6 @@ const TasksProvider: React.FC = (props) => {
   const updateTaskHandler = (newTask: Task) => {
     setTasks((prev) => {
       const targetIndex = prev.findIndex((task) => task.id === newTask.id);
-      // const newId = new Date().getTime().toString();
       const task = { ...newTask };
       prev.splice(targetIndex, 1);
       prev.push(task);
@@ -55,11 +54,9 @@ const TasksProvider: React.FC = (props) => {
       return;
     }
     const { year, month, date } = newPosition;
-
     const targetIndex = tasks.findIndex((task) => task.id === currentTask.id);
+    const { year: tYear, month: tMonth, date: tDate, alertTime } = currentTask;
 
-    const targetTask = tasks[targetIndex];
-    const { year: tYear, month: tMonth, date: tDate, alertTime } = targetTask;
     const timeChange =
       new Date(
         `${year}-${month < 10 ? "0" : ""}${month}-${
@@ -73,7 +70,13 @@ const TasksProvider: React.FC = (props) => {
       ).getTime();
 
     const newAlertTime = alertTime + timeChange;
-    const newTask = { ...currentTask, year, month, date, alertTime: newAlertTime };
+    const newTask = {
+      ...currentTask,
+      year,
+      month,
+      date,
+      alertTime: newAlertTime,
+    };
 
     setTasks((prev) => {
       const newTasks = [...prev];

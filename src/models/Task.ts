@@ -33,12 +33,10 @@ export class Task {
 
 export class TaskBox {
   isEmpty: boolean;
-  tasks: Task[];
   date: number;
 
   constructor(isEmpty: boolean, date: number) {
     this.isEmpty = isEmpty;
     this.date = date;
-    this.tasks = [];
   }
 }

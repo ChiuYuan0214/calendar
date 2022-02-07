@@ -1,7 +1,7 @@
 import React, { MouseEvent } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import { Task, TaskBox } from "../../../models/Task";
+import { TaskBox } from "../../../models/Task";
 import CalendarBox from "../CalendarBox/CalendarBox";
 import styles from "./CalendarRow.module.css";
 
@@ -10,10 +10,9 @@ const CalendarRow: React.FC<{
   setExpand: (row: number | null) => void;
   year: number;
   month: number;
-  boxRow: TaskBox[];
-  taskRow: Task[];
+  rowBox: TaskBox[];
   index: number;
-}> = ({ year, month, boxRow, taskRow, index, expandWeek, setExpand }) => {
+}> = ({ year, month, rowBox, index, expandWeek, setExpand }) => {
   const rowIndex = index;
   const isExpand = expandWeek === rowIndex;
 
@@ -25,17 +24,15 @@ const CalendarRow: React.FC<{
     setExpand(rowIndex);
   };
 
-  const list = boxRow.map((box, index) => {
-    const tasks = taskRow.filter((task) => task.date === box.date);
+  const list = rowBox.map((box, index) => {
     return (
       <CalendarBox
         key={index}
         index={index}
         isExpand={isExpand}
-        tasks={tasks}
         year={year}
         month={month}
-        boxData={box}
+        box={box}
       />
     );
   });

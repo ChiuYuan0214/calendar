@@ -1,9 +1,8 @@
-import React, { useState, DragEvent, MouseEvent, useContext, useEffect } from "react";
+import React, { useState, DragEvent, MouseEvent } from "react";
 
 import TaskModal from "../../../TaskModal/TaskModal";
 import { Task } from "../../../../models/Task";
 import StringReducer from "../../../UI/StringReducer/StringReducer";
-import { TasksContext } from "../../../../store/tasks-context";
 
 import styles from "./TaskContent.module.css";
 
@@ -11,13 +10,11 @@ const TaskContent: React.FC<{
   task: Task;
   index: number;
   isExpand: boolean;
-}> = ({ task, index, isExpand }) => {
+  setChange: () => void;
+}> = ({ task, index, isExpand, setChange }) => {
   const [onModal, setOnModal] = useState<boolean>(false);
-  const [isChange, setIsChange] = useState<boolean>(false);
-  const [curTask, setCurTask] = useState<Task>(task);
-  const ctx = useContext(TasksContext);
 
-  const { title, desc, level, tag, id } = curTask;
+  const { title, desc, level, tag, id } = task;
 
   const modalToggleHandler = () => {
     setOnModal((prev) => !prev);
@@ -38,20 +35,6 @@ const TaskContent: React.FC<{
     }
   };
 
-  const setChangeHandler = () => {
-    setIsChange(true);
-  };
-
-  useEffect(() => {
-    if (isChange) {
-      const newTask = ctx.tasks.find(t => t.id === id);
-      if (newTask) {
-        setCurTask(newTask);
-      }
-      setIsChange(false);
-    }
-  }, [isChange, ctx, id]);
-
   const itemStyle = {
     opacity: 0.5 + +level * 0.1,
   };
@@ -60,9 +43,9 @@ const TaskContent: React.FC<{
     <>
       {onModal && (
         <TaskModal
-          setChange={setChangeHandler}
           onClick={modalToggleHandler}
-          task={curTask}
+          task={task}
+          setChange={setChange}
         />
       )}
       <li

@@ -15,29 +15,42 @@ import styles from "./CalendarBox.module.css";
 
 const CalendarBox: React.FC<{
   index: number;
-  tasks: Task[];
   year: number;
   month: number;
-  boxData: TaskBox;
+  box: TaskBox;
   isExpand: boolean;
-}> = ({ index, tasks, year, month, boxData, isExpand }) => {
+}> = ({ index, year, month, box, isExpand }) => {
   const [droppable, setDroppable] = useState<boolean>(false);
   const [addTask, setAddTask] = useState<boolean>(false);
   const [onExpand, setOnExpand] = useState<boolean>(false);
-
+  const [isChange, setIsChange]= useState<boolean>(false);
+  const { isEmpty, date } = box;
   const ctx = useContext(TasksContext);
+  let tasks: Task[]|null = null;
+  if (!isEmpty) {
+    tasks = ctx.tasks.filter((task) => task.date === date);
+  }
 
-  const date = boxData.date ? boxData.date : "";
+  // to trigger re-rendering of TaskContent after updating context
+  useEffect(() => {
+    if (isChange) {
+      setIsChange(false);
+    }
+  }, [isChange]);
 
+  const setChangeHandler = () => {
+    setIsChange(true);
+  };
+  
   const dragEnterHandler = (event: DragEvent<HTMLLIElement>) => {
-    if (event.dataTransfer.types[0] === "text/plain" && date !== "") {
+    if (event.dataTransfer.types[0] === "text/plain" && !isEmpty) {
       setDroppable(true);
       event.preventDefault();
     }
   };
 
   const dragOverHandler = (event: DragEvent<HTMLLIElement>) => {
-    if (event.dataTransfer.types[0] === "text/plain" && date !== "") {
+    if (event.dataTransfer.types[0] === "text/plain" && !isEmpty) {
       event.preventDefault();
     }
   };
@@ -48,7 +61,7 @@ const CalendarBox: React.FC<{
 
   const dropHandler = (event: DragEvent<HTMLLIElement>) => {
     const taskId = event.dataTransfer.getData("text/plain");
-    if (tasks.some((task) => task.id === taskId) || date === "") {
+    if (isEmpty || (tasks && tasks.some((task) => task.id === taskId))) {
       setDroppable(false);
       return;
     }
@@ -86,16 +99,24 @@ const CalendarBox: React.FC<{
   }, [isExpand]);
 
   let contents;
-  if (tasks.length > 0) {
+  if (tasks && tasks.length > 0) {
     contents = tasks.map((task, index) => {
-      return <TaskContent key={index} index={index} task={task} isExpand={isExpand} />
+      return (
+        <TaskContent
+          key={index}
+          index={index}
+          task={task}
+          isExpand={isExpand}
+          setChange={setChangeHandler}
+        />
+      );
     });
   }
 
   return (
     <section
       className={`${styles.box} ${index > 4 && styles.weekendBox} ${
-        date === "" && styles.empty
+        isEmpty && styles.empty
       } ${droppable ? styles.onDrop : ""}`}
       onDragEnter={dragEnterHandler}
       onDragOver={dragOverHandler}
@@ -111,7 +132,7 @@ const CalendarBox: React.FC<{
           date={+date}
         />
       )}
-      <h3>{date}</h3>
+      <h3>{isEmpty ? "" : date}</h3>
       <ul>{contents}</ul>
     </section>
   );
