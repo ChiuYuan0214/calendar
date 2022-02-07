@@ -23,12 +23,14 @@ const CalendarBox: React.FC<{
   const [droppable, setDroppable] = useState<boolean>(false);
   const [addTask, setAddTask] = useState<boolean>(false);
   const [onExpand, setOnExpand] = useState<boolean>(false);
-  const [isChange, setIsChange]= useState<boolean>(false);
+  const [isChange, setIsChange] = useState<boolean>(false);
   const { isEmpty, date } = box;
   const ctx = useContext(TasksContext);
-  let tasks: Task[]|null = null;
+  let tasks: Task[] | null = null;
   if (!isEmpty) {
-    tasks = ctx.tasks.filter((task) => task.date === date);
+    tasks = ctx.tasks.filter(
+      (task) => task.date === date && task.year === year && task.month === month
+    );
   }
 
   // to trigger re-rendering of TaskContent after updating context
@@ -41,7 +43,7 @@ const CalendarBox: React.FC<{
   const setChangeHandler = () => {
     setIsChange(true);
   };
-  
+
   const dragEnterHandler = (event: DragEvent<HTMLLIElement>) => {
     if (event.dataTransfer.types[0] === "text/plain" && !isEmpty) {
       setDroppable(true);

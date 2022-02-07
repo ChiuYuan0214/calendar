@@ -1,0 +1,14 @@
+.tag {
+  padding: 1rem 2rem;
+  width: 10rem;
+  background-color: rgb(17, 16, 16);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.active {
+  background-color: rgb(32, 28, 28);
+}

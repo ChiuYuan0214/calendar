@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Task } from "../models/Task";
+import { convertIntoTime } from "../lib/date";
 
 type positionData = {
   year: number;
@@ -57,17 +58,9 @@ const TasksProvider: React.FC = (props) => {
     const targetIndex = tasks.findIndex((task) => task.id === currentTask.id);
     const { year: tYear, month: tMonth, date: tDate, alertTime } = currentTask;
 
-    const timeChange =
-      new Date(
-        `${year}-${month < 10 ? "0" : ""}${month}-${
-          date < 10 ? "0" : ""
-        }${date}`
-      ).getTime() -
-      new Date(
-        `${tYear}-${tMonth < 10 ? "0" : ""}${tMonth}-${
-          tDate < 10 ? "0" : ""
-        }${tDate}`
-      ).getTime();
+    const curTime = convertIntoTime(year, month, date);
+    const newTime = convertIntoTime(tYear, tMonth, tDate);
+    const timeChange = curTime - newTime;
 
     const newAlertTime = alertTime + timeChange;
     const newTask = {

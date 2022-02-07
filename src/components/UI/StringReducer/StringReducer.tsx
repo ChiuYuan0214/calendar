@@ -7,7 +7,8 @@ let initial = true;
 const StringReducer: React.FC<{
   string: string;
   enlarge: boolean;
-}> = ({ string, enlarge = false }) => {
+  reset: boolean;
+}> = ({ string, enlarge, reset }) => {
   const [fadeIndex, setFadeIndex] = useState(0);
 
   let stringArr = string.split("");
@@ -22,16 +23,16 @@ const StringReducer: React.FC<{
   }
 
   useEffect(() => {
-    if (initial) {
+    if (!reset && initial) {
       initial = false;
       return;
     }
-    if (enlarge) {
+    if (!reset && enlarge) {
       setFadeIndex(15);
     } else {
       setFadeIndex(0);
     }
-  }, [enlarge]);
+  }, [enlarge, reset]);
 
   const content = stringArr.map((char, index) => (
     <span

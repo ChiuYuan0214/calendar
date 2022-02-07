@@ -1,0 +1,50 @@
+.card {
+  background-color: rgb(53, 52, 52);
+  border-radius: 4px;
+  padding: 1rem;
+  height: 12rem;
+  color: rgb(192, 191, 191);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card:hover {
+  color: white;
+  position: relative;
+  transform: scale(1.03);
+  transition: all 0.3s ease-out;
+}
+
+.card h4,
+.card p:not(.tag) {
+  display: block;
+  margin: 0;
+}
+
+.card span {
+  display: inline-block;
+}
+
+.controls {
+  display: flex;
+}
+
+.tag {
+  margin-top: auto;
+  margin-left: 0;
+}
+
+.controls p,
+.tag {
+  display: block;
+  background-color: rgb(32, 28, 28);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.5rem;
+  border-radius: 4px;
+}
+
+.controls p:last-of-type {
+    margin-left: .5rem;
+}
+

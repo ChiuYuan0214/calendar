@@ -32,6 +32,11 @@
   margin-left: 1rem;
 }
 
+.calenBtn button:first-of-type {
+  background-color:rgb(59, 160, 243);
+  color:rgb(27, 81, 112);
+}
+
 .actions button:hover,
 .actions button:active {
   opacity: 1;

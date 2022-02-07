@@ -130,3 +130,18 @@ export const getCalendarTable = (startDay: number, length: number) => {
 
   return calendar;
 };
+
+export const convertIntoTime = (year: number, month: number, date: number) => {
+  const dateString = `${year}-${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}`;
+  const timeNum = new Date(dateString).getTime();
+  return timeNum;
+};
+
+export const convertIntoString = (year: number, month: number, date: number) => {
+  const dateString = `${year}-${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}`;
+  return dateString;
+};

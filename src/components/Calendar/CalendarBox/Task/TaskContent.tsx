@@ -59,7 +59,7 @@ const TaskContent: React.FC<{
       >
         <h4>{title}</h4>
         <p>
-          <StringReducer string={desc} enlarge={isExpand} />
+          <StringReducer string={desc} enlarge={isExpand} reset={false} />
         </p>
       </li>
     </>

@@ -7,9 +7,11 @@ import styles from "./SelectBar.module.css";
 const SelectBar: React.FC<{
   changeYear: (year: number) => void;
   changeMonth: (month: number) => void;
+  toggleTodo: (isToggle: boolean) => void;
   year: number;
   month: number;
-}> = ({ changeYear, changeMonth, year, month }) => {
+  isTodo: boolean;
+}> = ({ changeYear, changeMonth, toggleTodo, year, month, isTodo }) => {
   const [addMemo, setAddMemo] = useState(false);
   const [yearInput, setYearInput] = useState("2022");
   const [monthInput, setMonthInput] = useState("2");
@@ -20,10 +22,12 @@ const SelectBar: React.FC<{
 
   const yearChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYearInput(event.target.value);
+    toggleTodo(false);
   };
 
   const monthChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonthInput(event.target.value);
+    toggleTodo(false);
   };
 
   useEffect(() => {
@@ -46,8 +50,8 @@ const SelectBar: React.FC<{
 
   return (
     <section className={styles.bar}>
-      <div className={styles.actions}>
-        <button>Todo List</button>
+      <div className={`${styles.actions} ${isTodo ? styles.calenBtn : ""}`}>
+        <button onClick={() => toggleTodo(true)}>{isTodo ? "Calendar" : "TodoList"}</button>
         <button onClick={memoModalToggleHandler}>Add Memo</button>
       </div>
       {addMemo && (

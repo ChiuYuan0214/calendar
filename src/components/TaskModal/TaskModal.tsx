@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import BackDrop from "../UI/BackDrop/BackDrop";
 import { Task } from "../../models/Task";
 import { TasksContext } from "../../store/tasks-context";
+import { levelList } from "../../lib/option";
 
 import styles from "./TaskModal.module.css";
 
@@ -38,11 +39,11 @@ const changeReducer = (state: ChangeState, action: { type: string }) => {
   return { ...initialChangeState, [action.type]: true };
 };
 
-const TaskModal: React.FC<{ task: Task; onClick: () => void; setChange: () => void }> = ({
-  task,
-  onClick,
-  setChange
-}) => {
+const TaskModal: React.FC<{
+  task: Task;
+  onClick: () => void;
+  setChange: () => void;
+}> = ({ task, onClick, setChange }) => {
   const ctx = useContext(TasksContext);
   const [inputState, dispatchInput] = useReducer(inputReducer, task);
   const [changeState, dispatchChange] = useReducer(
@@ -136,7 +137,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void; setChange: () => vo
         {changeState.desc ? (
           <textarea
             value={desc}
-            rows={5}
+            rows={6}
             onChange={inputChangeHandler.bind(null, "desc")}
             onBlur={blurHandler}
           ></textarea>
@@ -162,7 +163,7 @@ const TaskModal: React.FC<{ task: Task; onClick: () => void; setChange: () => vo
             <option value="5">Hell</option>
           </select>
         ) : (
-          <p onDoubleClick={startEditHandler.bind(null, "level")}>{level}</p>
+          <p onDoubleClick={startEditHandler.bind(null, "level")}>{levelList[+level - 1]}</p>
         )}
       </div>
       <div className={styles.mark}>
