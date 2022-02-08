@@ -3,6 +3,12 @@
     list-style-type: none;
 }
 
+.list > p {
+    font-size: 1.7rem;
+    color: rgb(129, 129, 129);
+    margin-left: 5rem;
+}
+
 .headline {
     font-size: 3rem;
     margin-left: 3rem;

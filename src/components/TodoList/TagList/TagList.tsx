@@ -40,10 +40,10 @@ const TagList: React.FC = () => {
 
   return (
     <>
-      {contents && <h2 className={styles.headline}>Upcoming Tasks</h2>}
-      <ul className={styles.list}>{contents}</ul>
-      {expiredList && <h2 className={styles.headline}>Expired Tasks</h2>}
-      <ul className={styles.list}>{expiredList}</ul>
+      <h2 className={styles.headline}>Upcoming Tasks</h2>
+      <ul className={styles.list}>{contents || <p>No upcoming tasks.</p>}</ul>
+      <h2 className={styles.headline}>Expired Tasks</h2>
+      <ul className={styles.list}>{expiredList || <p>No expired tasks.</p>}</ul>
     </>
   );
 };

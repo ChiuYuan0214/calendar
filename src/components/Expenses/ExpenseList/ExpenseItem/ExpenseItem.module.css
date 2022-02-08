@@ -1,0 +1,39 @@
+.expense {
+  display: block;
+  color: white;
+  font-family: monospace;
+  background-color: rgb(49, 47, 47);
+  border-radius: 4px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.27);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  opacity: 0;
+  animation: fade-in 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+
+.expense p,
+.expense h3 {
+  margin: 0 0 1rem;
+  display: block;
+}
+
+.expense p {
+  margin-left: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: baseline;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

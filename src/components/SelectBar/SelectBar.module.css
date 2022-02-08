@@ -14,7 +14,7 @@
 .actions button {
   padding: .5rem 1rem;
   margin : 0 0 0 2rem;
-  width: 8rem;
+  min-width: 8rem;
   font-family: monospace;
   font-size: 1rem;
   font-weight: bold;
@@ -26,15 +26,21 @@
   outline: none;
 }
 
-.actions button:last-of-type {
+.calenBtn button:first-of-type {
+  background-color:rgb(59, 160, 243);
+  color:rgb(27, 81, 112);
+}
+
+.actions button:nth-of-type(2) {
   background-color:rgb(218, 108, 108);
   color:rgb(129, 9, 9);
   margin-left: 1rem;
 }
 
-.calenBtn button:first-of-type {
-  background-color:rgb(59, 160, 243);
-  color:rgb(27, 81, 112);
+.actions button.switch {
+  background-color:rgb(14, 13, 13);
+  color:rgb(190, 181, 181);
+  margin-left: 1rem;
 }
 
 .actions button:hover,
@@ -72,7 +78,6 @@
 }
 
 .inputControl input {
-  font-weight: bold;
   width: 7rem;
   text-align: center;
 }

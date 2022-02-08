@@ -8,10 +8,23 @@ const SelectBar: React.FC<{
   changeYear: (year: number) => void;
   changeMonth: (month: number) => void;
   toggleTodo: (isToggle: boolean) => void;
+  toggleExpenses: () => void;
+  toggleChart: () => void;
   year: number;
   month: number;
   isTodo: boolean;
-}> = ({ changeYear, changeMonth, toggleTodo, year, month, isTodo }) => {
+  isExpenses: boolean;
+}> = ({
+  changeYear,
+  changeMonth,
+  toggleTodo,
+  toggleExpenses,
+  toggleChart,
+  year,
+  month,
+  isTodo,
+  isExpenses,
+}) => {
   const [addMemo, setAddMemo] = useState(false);
   const [yearInput, setYearInput] = useState("2022");
   const [monthInput, setMonthInput] = useState("2");
@@ -51,8 +64,23 @@ const SelectBar: React.FC<{
   return (
     <section className={styles.bar}>
       <div className={`${styles.actions} ${isTodo ? styles.calenBtn : ""}`}>
-        <button onClick={() => toggleTodo(true)}>{isTodo ? "Calendar" : "TodoList"}</button>
-        <button onClick={memoModalToggleHandler}>Add Memo</button>
+        {!isExpenses && (
+          <>
+            <button onClick={() => toggleTodo(true)}>
+              {isTodo ? "Calendar" : "TodoList"}
+            </button>
+            <button onClick={memoModalToggleHandler}>Add Memo</button>
+          </>
+        )}
+        {isExpenses && (
+          <>
+            <button onClick={toggleChart}>Chart</button>
+            <button>Add Expenses</button>
+          </>
+        )}
+        <button className={styles.switch} onClick={toggleExpenses}>
+          Switch to {isExpenses ? "Calendar" : "Expenses"}
+        </button>
       </div>
       {addMemo && (
         <MemoModal
