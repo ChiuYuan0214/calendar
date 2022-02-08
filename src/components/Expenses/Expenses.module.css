@@ -1,0 +1,33 @@
+.box {
+  overflow: hidden;
+}
+
+.dropdown {
+  animation: drop 0.8s ease-in-out forwards;
+}
+
+.pullup {
+  animation: pull 0.8s ease-in-out forwards;
+}
+
+@keyframes drop {
+  0% {
+    height: 0;
+    opacity: .1;
+  }
+  100% {
+    height: 27.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes pull {
+  0% {
+    height: 27.5rem;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: .1;
+  }
+}

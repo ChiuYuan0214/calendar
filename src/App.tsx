@@ -4,6 +4,7 @@ import SelectBar from "./components/SelectBar/SelectBar";
 import Calendar from "./components/Calendar/Calendar";
 import TodoList from "./components/TodoList/TodoList";
 import Expenses from "./components/Expenses/Expenses";
+import AddExpenseModal from "./components/AddExpenseModal/AddExpenseModal";
 
 import ExpensesContext from './store/expenses-context';
 
@@ -36,7 +37,7 @@ const App: React.FC = () => {
     }
   };
 
-  const ToggleaddExpenseHandler = () => {
+  const ToggleAddExpenseHandler = () => {
     setAddExpense((prev) => !prev);
   };
 
@@ -66,9 +67,9 @@ const App: React.FC = () => {
         toggleTodo={toggleTodoListHandler}
         toggleExpenses={toggleExpensesHandler}
         toggleChart={toggleChartHandler}
-        toggleAddExpense={ToggleaddExpenseHandler}
+        toggleAddExpense={ToggleAddExpenseHandler}
       />
-      {addExpense && <section></section>}
+      {addExpense && <AddExpenseModal toggleAdding={ToggleAddExpenseHandler} />}
       {isExpenses && <Expenses expenses={expenses} chart={isChart} year={year} month={month} />}
       {!isExpenses && !isTodoList && <Calendar year={year} month={month} />}
       {!isExpenses && isTodoList && <TodoList />}

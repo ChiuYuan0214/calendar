@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext} from "react";
 
+import ExpensesContext from "../../../store/expenses-context";
 import { Expense } from "../../../models/Expense";
 import { createLength } from "../../../lib/date";
 
@@ -15,6 +16,7 @@ const Chart: React.FC<{
   sort: string;
   expenses: Expense[];
 }> = ({ sort, year, month, expenses }) => {
+  const ctx = useContext(ExpensesContext);
   let barNum = 0;
   let numList: number[] = [];
 
@@ -42,6 +44,7 @@ const Chart: React.FC<{
     for (let i = 0; i < barNum; i++) {
       numList.push(0);
     }
+    const expenses = ctx.expenses;
     const filteredList = expenses.filter(
       (expense) => expense.year >= year - 3 && expense.year <= year + 3
     );

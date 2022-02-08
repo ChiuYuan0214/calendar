@@ -1,0 +1,38 @@
+.modal {
+  position: fixed;
+  width: 450px;
+  height: 250px;
+  top: calc(50% - 125px);
+  left: calc(50% - 225px);
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  padding: 1.3rem 1.5rem;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions button {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid blue;
+  color: blue;
+  background-color: white;
+  font-weight: bold;
+  transition: all .3s;
+}
+
+.actions button:last-of-type {
+  margin-left: .7rem;
+}
+
+.actions button:hover {
+  background-color: blue;
+  color: white;
+}
