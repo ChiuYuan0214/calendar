@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Expense } from "../../../models/Expense";
 
@@ -11,6 +11,8 @@ const ExpenseList: React.FC<{
   year: number;
   month: number;
 }> = ({ expenses, year, month }) => {
+  const [isFade, setIsFade] = useState<boolean>(false);
+
   let contents = null;
   if (expenses.length > 0) {
     const sortedExpenses = expenses.sort((a: Expense, b: Expense) =>
@@ -26,10 +28,19 @@ const ExpenseList: React.FC<{
     inform = `Expenses in ${year} - ${month}`;
   }
 
+  console.log("list rendered!");
+
+  useEffect(() => {
+    setIsFade(true);
+    setTimeout(() => {
+      setIsFade(false);
+    }, 700);
+  }, [year, month]);
+
   return (
     <>
       <ul className={styles.board}>
-        <h1>{inform}</h1>
+        <h1 className={isFade ? styles.fill : ""}>{inform}</h1>
         {contents}
       </ul>
     </>

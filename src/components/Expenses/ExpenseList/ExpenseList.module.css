@@ -1,15 +1,29 @@
 .board {
-    list-style-type: none;
-    padding: 1.5rem;
-    background-color: rgb(32, 32, 32);
-    margin: .5rem 2rem;
-    border-radius: 4px;
-    min-height: 5rem;
+  list-style-type: none;
+  padding: 1.5rem;
+  background-color: rgb(32, 32, 32);
+  margin: 0.5rem 2rem;
+  border-radius: 4px;
+  min-height: 5rem;
 }
 
 .board > h1 {
-    font-size: 1.7rem;
-    color: rgb(129, 129, 129);
-    margin: 0 0 1rem 3rem;
-    letter-spacing: .2rem;
+  font-size: 1.7rem;
+  color: rgb(129, 129, 129);
+  margin: 0 0 1rem 3rem;
+  letter-spacing: 0.1rem;
+  opacity: 1;
+}
+
+.board > h1.fill {
+  animation: fade-in .7s ease-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

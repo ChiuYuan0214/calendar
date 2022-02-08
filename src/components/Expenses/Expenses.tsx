@@ -6,14 +6,12 @@ import SortBar from "./SortBar/SortBar";
 import Chart from "./Chart/Chart";
 import ExpenseList from "./ExpenseList/ExpenseList";
 
-import styles from "./Expenses.module.css";
-
 const DUMMY_DATA = [
   new Expense(
     "Buy a bicycle",
     8000,
     "tool",
-    "Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode. Instead, add a ref directly to the element you want to reference",
+    "Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode. Instead, add a ref directly to the element you want to referenceWarning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode. Instead, add a ref directly to the element you want to reference",
     2022,
     2,
     8
@@ -119,7 +117,7 @@ const Expenses: React.FC<{ chart: boolean; year: number; month: number }> = ({
   return (
     <section>
       {chart && <SortBar setSort={setSortHandler} sort={sort} />}
-      {chart && <Chart sort={sort} expenses={DUMMY_DATA} />}
+      {chart && <Chart year={year} month={month} sort={sort} expenses={filteredExpenses} />}
       <ExpenseList year={year} month={month} expenses={filteredExpenses} />
     </section>
   );

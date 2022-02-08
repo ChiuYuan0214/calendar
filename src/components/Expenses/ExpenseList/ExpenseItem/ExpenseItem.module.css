@@ -1,6 +1,6 @@
 .expense {
-  display: block;
-  color: white;
+  display: flex;
+  color: rgb(216, 209, 209);
   font-family: monospace;
   background-color: rgb(49, 47, 47);
   border-radius: 4px;
@@ -10,6 +10,12 @@
   opacity: 0;
   animation: fade-in 0.2s ease-out;
   animation-fill-mode: forwards;
+  transition: all .3s ease-out;
+}
+
+.expense:hover {
+  background-color: rgb(80, 75, 75);
+  color: white;
 }
 
 .expense p,
@@ -18,8 +24,16 @@
   display: block;
 }
 
-.expense p {
-  margin-left: 1rem;
+.expense p:last-of-type {
+  margin-bottom: 0;
+}
+
+.info {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -27,6 +41,21 @@
   font-weight: bold;
   display: flex;
   align-items: baseline;
+  margin-bottom: auto;
+}
+
+.info p {
+  margin-left: 1rem;
+}
+
+.desc {
+  max-width: 25rem;
+  margin-left: auto;
+}
+
+.desc p:first-of-type {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 @keyframes fade-in {

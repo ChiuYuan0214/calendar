@@ -1,0 +1,19 @@
+.box {
+  padding: 1rem;
+  background-color: rgb(32, 32, 32);
+  margin: 0.5rem 2rem;
+  border-radius: 4px;
+  min-height: 5rem;
+}
+
+.chart {
+  background-color: rgb(224, 220, 220);
+  border-radius: 4px;
+  height: 20rem;
+  display: flex;
+  padding: 2rem .5rem 1rem;
+}
+
+.contentBox {
+  width: calc(100% - 3rem);
+}

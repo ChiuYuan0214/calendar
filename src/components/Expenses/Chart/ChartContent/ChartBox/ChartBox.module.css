@@ -1,0 +1,25 @@
+.box {
+    min-width: 2.26rem;
+    height: 100%;
+    display: flex;
+    border-right: 1px dotted rgb(39, 39, 39);
+}
+
+.bar {
+    margin: 0 auto;
+    width: 40%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.sidebar > div {
+    border-top: 1px solid rgb(39, 39, 39);
+    height: 10%;
+    width: 0.2rem;
+}
+
+.fill {
+    width: 100%;
+    background-color: blueviolet;
+    transition: height .5s ease-out;
+}

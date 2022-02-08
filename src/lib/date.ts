@@ -78,8 +78,10 @@ export const createStartDay = (startDayIndex: number, isLeap: boolean) => {
   return newList;
 };
 
+const monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 export const createLength = (monthIndex: number, isLeap: boolean) => {
-  const list = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const list = monthLength;
   let length = list[monthIndex];
   if (isLeap && monthIndex === 1) {
     length++;

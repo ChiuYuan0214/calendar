@@ -1,0 +1,19 @@
+.scale {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.05rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    position: relative;
+    bottom: .45rem;
+    right: .2rem;
+}
+
+.scale > li {
+    letter-spacing: 0;
+    height: calc(10% - 0.2rem);
+    width: 2.5rem;
+    text-align: right;
+}
