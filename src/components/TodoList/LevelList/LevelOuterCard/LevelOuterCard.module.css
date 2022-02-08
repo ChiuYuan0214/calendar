@@ -1,0 +1,45 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  min-height: 10rem;
+  border-radius: 4px;
+  transition: all .3s ease-out;
+  opacity: 0.85;
+}
+
+.card:hover {
+  opacity: 1;
+  box-shadow: 0 0 10px 3px rgba(65, 23, 23, 0.27);
+}
+
+.card > ul {
+  list-style-type: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card > h3 {
+  margin: 0.5rem 1rem;
+  color: rgb(197, 196, 196);
+}
+
+.card:hover > h3 {
+  color: white;
+  transform: scale(1.01);
+  transition: all 0.2s;
+}
+
+.card.expired,
+.card.expired:hover {
+  background-color: black;
+}
+
+.card.expired h3,
+.card.expired:hover h3 {
+  transform: none;
+  color: rgb(146, 142, 142);
+}

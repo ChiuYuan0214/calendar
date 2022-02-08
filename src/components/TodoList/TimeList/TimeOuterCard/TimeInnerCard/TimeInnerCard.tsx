@@ -1,9 +1,9 @@
 import React from "react";
 
-import { MonthObj } from "../../../../../models/DateObj";
-import TaskCard from "./TaskCard/TaskCard";
+import { MonthObj } from "../../../../../models/TaskObj";
+import TaskCard from "../../../TaskCard/TaskCard";
 
-import styles from "./InnerCard.module.css";
+import styles from "./TimeInnerCard.module.css";
 
 const InnerCard: React.FC<{ monthObj: MonthObj; expired: boolean }> = ({
   monthObj,

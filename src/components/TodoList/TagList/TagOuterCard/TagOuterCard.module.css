@@ -1,0 +1,65 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  min-height: 10rem;
+  border-radius: 4px;
+  transition: all .3s ease-out;
+  opacity: 0.85;
+}
+
+.card:hover {
+  opacity: 1;
+  box-shadow: 0 0 10px 3px rgba(0,0,0,0.26);
+}
+
+.card > ul {
+  list-style-type: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card > h3 {
+  margin: 0.5rem 1rem;
+  color: rgb(197, 196, 196);
+}
+
+.card:hover > h3 {
+  color: white;
+  transform: scale(1.01);
+  transition: all 0.2s;
+}
+
+.card.expired,
+.card.expired:hover {
+  background-color: black;
+}
+
+.card.expired h3,
+.card.expired:hover h3 {
+  transform: none;
+  color: rgb(146, 142, 142);
+}
+
+.work {
+  background-color: rgb(148, 6, 6);
+}
+
+.family {
+  background-color:rgb(6, 111, 121);
+}
+
+.friends {
+  background-color:rgb(121, 6, 115);
+}
+
+.entertainment {
+  background-color:rgb(105, 2, 37);
+}
+
+.learning {
+  background-color: rgb(12, 153, 87);
+}

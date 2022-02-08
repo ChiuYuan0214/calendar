@@ -1,9 +1,9 @@
 import React from "react";
 
-import InnerCard from "./InnerCard/InnerCard";
-import { YearObj, MonthObj } from "../../../../models/DateObj";
+import InnerCard from "./TimeInnerCard/TimeInnerCard";
+import { YearObj, MonthObj } from "../../../../models/TaskObj";
 
-import styles from "./OuterCard.module.css";
+import styles from "./TimeOuterCard.module.css";
 
 const OuterCard: React.FC<{ yearBox: YearObj; expired: boolean }> = ({ yearBox, expired }) => {
   const year = yearBox.year;

@@ -1,0 +1,13 @@
+.list {
+    padding: 0;
+}
+
+.headline {
+    font-size: 3rem;
+    margin-left: 3rem;
+    color: rgb(129, 129, 129);
+}
+
+.headline:last-of-type {
+    margin-top: 5rem;
+}

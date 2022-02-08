@@ -1,0 +1,33 @@
+.card {
+  display: block;
+  background-color: rgb(32, 28, 28);
+  margin: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.27);
+}
+
+.card > h3 {
+  display: block;
+  margin: 0.5rem 1rem;
+  color: rgb(149, 139, 139);
+}
+
+.card:hover > h3 {
+  color: white;
+  transform: scale(1.01);
+  transition: all 0.2s;
+}
+
+.card > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background-color: rgb(22, 21, 21);
+  border-radius: 4px;
+}
