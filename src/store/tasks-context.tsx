@@ -39,9 +39,8 @@ const TasksProvider: React.FC = (props) => {
   const updateTaskHandler = (newTask: Task) => {
     setTasks((prev) => {
       const targetIndex = prev.findIndex((task) => task.id === newTask.id);
-      const task = { ...newTask };
       prev.splice(targetIndex, 1);
-      prev.push(task);
+      prev.push(newTask);
 
       return prev;
     });

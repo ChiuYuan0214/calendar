@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, RefObject } from "react";
 
 import styles from "./ChartBox.module.css";
 
@@ -13,6 +13,7 @@ const ChartBox: React.FC<{
 }> = ({ index, num, maxVal, sort, year, month, colNum }) => {
   const [isStart, setIsStart] = useState(false);
   const [isFill, setIsFill] = useState(false);
+  const boxRef:RefObject<HTMLDivElement> = useRef(null);
 
   const scale = [];
   for (let i = 0; i < 10; i++) {
@@ -45,7 +46,7 @@ const ChartBox: React.FC<{
   }, [isStart]);
 
   return (
-    <div className={styles.box} style={{width: `${100 / colNum}%`}}>
+    <div ref={boxRef} className={styles.box} style={{width: `${100 / colNum}%`}}>
       {sideBar}
       <div className={styles.bar}>
         <div

@@ -10,6 +10,7 @@ const SelectBar: React.FC<{
   toggleTodo: (isToggle: boolean) => void;
   toggleExpenses: () => void;
   toggleChart: () => void;
+  toggleAddExpense: () => void;
   year: number;
   month: number;
   isTodo: boolean;
@@ -20,6 +21,7 @@ const SelectBar: React.FC<{
   toggleTodo,
   toggleExpenses,
   toggleChart,
+  toggleAddExpense,
   year,
   month,
   isTodo,
@@ -75,7 +77,7 @@ const SelectBar: React.FC<{
         {isExpenses && (
           <>
             <button onClick={toggleChart}>Chart</button>
-            <button>Add Expenses</button>
+            <button onClick={toggleAddExpense}>Add Expenses</button>
           </>
         )}
         <button className={styles.switch} onClick={toggleExpenses}>

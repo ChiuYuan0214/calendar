@@ -1,25 +1,47 @@
 .box {
-    min-width: 2.26rem;
-    height: 100%;
-    display: flex;
-    border-right: 1px dotted rgb(39, 39, 39);
+  min-width: 2.26rem;
+  height: 100%;
+  display: flex;
+  border-right: 1px dotted rgb(39, 39, 39);
 }
 
 .bar {
-    margin: 0 auto;
-    width: 40%;
-    display: flex;
-    align-items: flex-end;
+  margin: 0 auto;
+  width: 40%;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
 }
 
 .sidebar > div {
-    border-top: 1px solid rgb(39, 39, 39);
-    height: 10%;
-    width: 0.2rem;
+  border-top: 1px solid rgb(39, 39, 39);
+  height: 10%;
+  width: 0.2rem;
 }
 
 .fill {
-    width: 100%;
-    background-color: blueviolet;
-    transition: height .5s ease-out;
+  width: 100%;
+  background-color: blueviolet;
+  transition: height 0.5s ease-out;
+}
+
+.dot {
+  content: "";
+  border-radius: 50%;
+  height: 0.3rem;
+  width: 0.3rem;
+  background-color: rgb(139, 9, 9);
+  position: absolute;
+  left: 40%;
+  bottom: -1%;
+}
+
+.line {
+  height: 100%;
+  width: 0.2rem;
+  background-color: rgb(139, 9, 9);
+  position: absolute;
+  left: 41%;
+  bottom: -1%;
+  animation: height .3s ease-out;
 }

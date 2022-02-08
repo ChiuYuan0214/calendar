@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import TasksProvider from './store/tasks-context';
+import TasksProvider from "./store/tasks-context";
+import { ExpensesProvider } from "./store/expenses-context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TasksProvider>
-      <App />
-    </TasksProvider>
+    <ExpensesProvider>
+      <TasksProvider>
+        <App />
+      </TasksProvider>
+    </ExpensesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

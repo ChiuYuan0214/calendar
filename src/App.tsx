@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import SelectBar from "./components/SelectBar/SelectBar";
 import Calendar from "./components/Calendar/Calendar";
 import TodoList from "./components/TodoList/TodoList";
 import Expenses from "./components/Expenses/Expenses";
+
+import ExpensesContext from './store/expenses-context';
 
 const App: React.FC = () => {
   const [year, setYear] = useState<number>(2022);
@@ -11,6 +13,10 @@ const App: React.FC = () => {
   const [isTodoList, setIsTodoList] = useState<boolean>(false);
   const [isExpenses, setIsExpenses] = useState<boolean>(false);
   const [isChart, setIsChart] = useState<boolean>(false);
+  const [addExpense, setAddExpense] = useState(false);
+
+  const ctx = useContext(ExpensesContext);
+  const expenses = ctx.expenses;
 
   const changeYearHandler = (year: number) => {
     setYear(year);
@@ -28,6 +34,10 @@ const App: React.FC = () => {
         setIsTodoList(false);
       }, 550);
     }
+  };
+
+  const ToggleaddExpenseHandler = () => {
+    setAddExpense((prev) => !prev);
   };
 
   const toggleExpensesHandler = () => {
@@ -56,8 +66,10 @@ const App: React.FC = () => {
         toggleTodo={toggleTodoListHandler}
         toggleExpenses={toggleExpensesHandler}
         toggleChart={toggleChartHandler}
+        toggleAddExpense={ToggleaddExpenseHandler}
       />
-      {isExpenses && <Expenses chart={isChart} year={year} month={month} />}
+      {addExpense && <section></section>}
+      {isExpenses && <Expenses expenses={expenses} chart={isChart} year={year} month={month} />}
       {!isExpenses && !isTodoList && <Calendar year={year} month={month} />}
       {!isExpenses && isTodoList && <TodoList />}
     </section>
