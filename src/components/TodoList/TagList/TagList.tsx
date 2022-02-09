@@ -23,7 +23,7 @@ const TagList: React.FC = () => {
   let contents = null;
   if (sortedTasks.length > 0) {
     contents = sortedTasks.map((tagBox) => (
-      <li>
+      <li key={tagBox.tag}>
         <TagOuterCard tagBox={tagBox} expired={false} />
       </li>
     ));
@@ -32,7 +32,7 @@ const TagList: React.FC = () => {
   let expiredList = null;
   if (sortedExpiredTasks.length > 0) {
     expiredList = sortedExpiredTasks.map((tagBox) => (
-      <li>
+      <li key={tagBox.tag}>
         <TagOuterCard tagBox={tagBox} expired={true} />
       </li>
     ));

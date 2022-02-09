@@ -55,7 +55,7 @@
 }
 
 .level {
-  width: 4rem;
+  width: 8rem;
 }
 
 .tag {
@@ -94,16 +94,22 @@
 .actions {
   display: flex;
   align-items: baseline;
+  justify-content: flex-end;
   margin-top: auto;
 }
 
 .actions button {
-  margin: auto 1rem 1rem auto;
+  margin: auto 1rem 1rem;
   color: rgb(78, 37, 37);
   border: 1px solid rgb(78, 37, 37);
   border-radius: 4px;
   padding: 0.2rem 0.5rem;
   font-weight: bold;
+  width: 4.5rem;
+}
+
+.actions button:first-of-type {
+  margin-right: 0;
 }
 
 .actions button:hover {

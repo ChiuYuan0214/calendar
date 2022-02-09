@@ -16,7 +16,7 @@ const OuterCard: React.FC<{ levelBox: LevelObj; expired: boolean }> = ({
   const outputLevel = levelList[+level - 1];
   const tagSortedTasks = sortTaskByTag(levelBox.tasks);
   const contents = tagSortedTasks.map((tagBox: TagObj) => (
-    <LevelInnerCard tagBox={tagBox} expired={expired} />
+    <LevelInnerCard key={tagBox.tag} tagBox={tagBox} expired={expired} />
   ));
 
   const style = expired

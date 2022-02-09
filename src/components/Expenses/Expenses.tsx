@@ -8,23 +8,28 @@ import SortBar from "./SortBar/SortBar";
 import Chart from "./Chart/Chart";
 import ExpenseList from "./ExpenseList/ExpenseList";
 
-import styles from './Expenses.module.css';
+import styles from "./Expenses.module.css";
 
 const Expenses: React.FC<{
   chart: boolean;
   year: number;
   month: number;
   expenses: Expense[];
-}> = ({ chart, year, month, expenses }) => {
+  setChange: () => void;
+}> = ({ chart, year, month, expenses, setChange }) => {
   const [sort, setSort] = useState<string>("SORT_DAY");
 
   const setSortHandler = (option: string) => {
     setSort(option);
   };
 
-  const filteredExpenses = expenses.filter(
-    (expense) => expense.year === year && expense.month === month
-  );
+  let filteredExpenses = expenses.filter((expense) => expense.year === year);
+
+  if (sort === "SORT_DAY") {
+    filteredExpenses = filteredExpenses.filter(
+      (expense) => expense.month === month
+    );
+  }
 
   const animationTiming = {
     enter: 800,
@@ -53,7 +58,7 @@ const Expenses: React.FC<{
           />
         </section>
       </CSSTransition>
-      <ExpenseList year={year} month={month} expenses={filteredExpenses} />
+      <ExpenseList year={year} month={month} expenses={filteredExpenses} setChange={setChange} />
     </section>
   );
 };

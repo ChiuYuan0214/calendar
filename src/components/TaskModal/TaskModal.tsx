@@ -90,6 +90,11 @@ const TaskModal: React.FC<{
     setChange();
   };
 
+  const removeTaskHandler = () => {
+    ctx.removeTask(task.id);
+    onClick();
+  };
+
   const clearFocusHandler = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     if (
@@ -222,6 +227,7 @@ const TaskModal: React.FC<{
         )}
       </div>
       <div className={styles.actions}>
+        <button onClick={removeTaskHandler}>Delete</button>
         <button onClick={onClick}>Confirm</button>
       </div>
     </section>

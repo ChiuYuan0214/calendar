@@ -11,7 +11,7 @@ const InnerCard: React.FC<{ monthObj: MonthObj; expired: boolean }> = ({
 }) => {
   const month = monthObj.month;
 
-  let contents = monthObj.tasks.map((task) => <TaskCard task={task} />);
+  let contents = monthObj.tasks.map((task) => <TaskCard key={task.id} task={task} />);
   if (expired) {
     contents = contents.reverse();
   }

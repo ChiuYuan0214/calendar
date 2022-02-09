@@ -11,7 +11,7 @@ const InnerCard: React.FC<{ tagBox: TagObj; expired: boolean }> = ({
 }) => {
   const tag = tagBox.tag;
 
-  let contents = tagBox.tasks.map((task) => <TaskCard task={task} />);
+  let contents = tagBox.tasks.map((task) => <TaskCard key={task.id} task={task} />);
   if (expired) {
     contents = contents.reverse();
   }

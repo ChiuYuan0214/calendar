@@ -27,7 +27,16 @@ export class Task {
     this.year = year;
     this.month = month;
     this.date = date;
-    this.id = new Date().getTime().toString();
+    this.id =
+      new Date().getTime().toString() +
+      "_" +
+      this.title +
+      "_" +
+      this.tag +
+      "_" +
+      this.level +
+      "_" +
+      this.date;
   }
 }
 

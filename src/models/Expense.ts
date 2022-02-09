@@ -24,6 +24,15 @@ export class Expense {
     this.year = year;
     this.month = month;
     this.date = date;
-    this.id = new Date().getTime().toString();
+    this.id =
+      new Date().getTime().toString() +
+      "_" +
+      this.title +
+      "_" +
+      this.amount +
+      "_" +
+      this.tag +
+      "_" +
+      this.date;
   }
 }

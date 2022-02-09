@@ -15,6 +15,7 @@ const App: React.FC = () => {
   const [isExpenses, setIsExpenses] = useState<boolean>(false);
   const [isChart, setIsChart] = useState<boolean>(false);
   const [addExpense, setAddExpense] = useState(false);
+  const [expenseIsChange, setExpenseIsChange] = useState<boolean>(false);
 
   const ctx = useContext(ExpensesContext);
   const expenses = ctx.expenses;
@@ -49,6 +50,10 @@ const App: React.FC = () => {
     setIsChart((prev) => !prev);
   };
 
+  const checkExpenseChange = () => {
+    setExpenseIsChange(true);
+  };
+
   useEffect(() => {
     if (isExpenses) {
       setIsTodoList(false);
@@ -56,6 +61,12 @@ const App: React.FC = () => {
       setIsChart(false);
     }
   }, [isExpenses]);
+
+  useEffect(() => {
+    if (expenseIsChange) {
+      setExpenseIsChange(false);
+    }
+  }, [expenseIsChange]);
 
   return (
     <section>
@@ -84,6 +95,7 @@ const App: React.FC = () => {
           chart={isChart}
           year={year}
           month={month}
+          setChange={checkExpenseChange}
         />
       )}
       {!isExpenses && !isTodoList && <Calendar year={year} month={month} />}

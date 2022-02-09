@@ -13,7 +13,7 @@ const InnerCard: React.FC<{ levelBox: LevelObj; expired: boolean }> = ({
   const level = levelBox.level;
   const outputLevel = levelList[+level - 1];
 
-  let contents = levelBox.tasks.map((task) => <TaskCard task={task} />);
+  let contents = levelBox.tasks.map((task) => <TaskCard key={task.id} task={task} />);
   if (expired) {
     contents = contents.reverse();
   }

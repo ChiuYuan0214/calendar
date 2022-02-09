@@ -8,7 +8,7 @@ import styles from "./TimeOuterCard.module.css";
 const OuterCard: React.FC<{ yearBox: YearObj; expired: boolean }> = ({ yearBox, expired }) => {
   const year = yearBox.year;
   let contents = yearBox.monthList.map((monthObj: MonthObj) => (
-      <InnerCard monthObj={monthObj} expired={expired} />
+      <InnerCard key={monthObj.month} monthObj={monthObj} expired={expired} />
   ));
   if (expired) {
     contents = contents.reverse();

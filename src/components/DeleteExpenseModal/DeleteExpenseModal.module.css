@@ -1,0 +1,52 @@
+.modal {
+  position: fixed;
+  width: 400px;
+  height: 250px;
+  left: calc(50% - 200px);
+  top: calc(50% - 125px);
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.message h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.actions button {
+  background-color: white;
+  border: 1px solid rgb(34, 34, 161);
+  color: rgb(34, 34, 161);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  width: 4.5rem;
+  transition: all .3s;
+}
+
+.actions button:hover {
+    background-color: rgb(34, 34, 161);
+    color: white;
+}
+
+.actions button:last-of-type {
+    border-color: rgb(167, 23, 23);
+    color: rgb(167, 23, 23);
+    margin-left: 1rem;
+}
+
+.actions button:last-of-type:hover {
+    background-color: rgb(167, 23, 23);
+    color: white;
+}

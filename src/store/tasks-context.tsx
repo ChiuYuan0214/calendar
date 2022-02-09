@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Task } from "../models/Task";
 import { convertIntoTime } from "../lib/date";
 
+import {DUMMY_TASK_DATA} from '../data/dummy-tasks';
+
 type positionData = {
   year: number;
   month: number;
@@ -26,7 +28,7 @@ export const TasksContext = React.createContext<taskContextObj>({
 });
 
 const TasksProvider: React.FC = (props) => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(DUMMY_TASK_DATA);
 
   const addTaskHandler = (newTask: Task) => {
     setTasks((prev) => [...prev, newTask]);

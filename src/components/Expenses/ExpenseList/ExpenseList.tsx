@@ -10,7 +10,8 @@ const ExpenseList: React.FC<{
   expenses: Expense[];
   year: number;
   month: number;
-}> = ({ expenses, year, month }) => {
+  setChange: () => void;
+}> = ({ expenses, year, month, setChange }) => {
   const [isFade, setIsFade] = useState<boolean>(false);
 
   let contents = null;
@@ -19,7 +20,7 @@ const ExpenseList: React.FC<{
       a.date > b.date ? -1 : 1
     );
     contents = sortedExpenses.map((expense, index) => (
-      <ExpenseItem key={index} index={index} expense={expense} />
+      <ExpenseItem key={index} index={index} expense={expense} setChange={setChange} />
     ));
   }
 
@@ -30,9 +31,12 @@ const ExpenseList: React.FC<{
 
   useEffect(() => {
     setIsFade(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsFade(false);
     }, 700);
+    return () => {
+      clearTimeout(timer);
+    }
   }, [year, month]);
 
   return (

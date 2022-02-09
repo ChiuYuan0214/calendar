@@ -23,7 +23,7 @@ const LevelList: React.FC = () => {
   let contents = null;
   if (sortedTasks.length > 0) {
     contents = sortedTasks.map((levelBox) => (
-      <li>
+      <li key={levelBox.level}>
         <LevelOuterCard levelBox={levelBox} expired={false} />
       </li>
     ));
@@ -32,7 +32,7 @@ const LevelList: React.FC = () => {
   let expiredList = null;
   if (sortedExpiredTasks.length > 0) {
     expiredList = sortedExpiredTasks.map((levelBox) => (
-      <li>
+      <li key={levelBox.level}>
         <LevelOuterCard levelBox={levelBox} expired={true} />
       </li>
     ));

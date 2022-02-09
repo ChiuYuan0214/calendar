@@ -25,7 +25,7 @@ const TimeList: React.FC = () => {
   let contents = null;
   if (sortedTasks.length > 0) {
     contents = sortedTasks.map((yearBox) => (
-      <li>
+      <li key={yearBox.year}>
         <OuterCard yearBox={yearBox} expired={false} />
       </li>
     ));
@@ -34,7 +34,7 @@ const TimeList: React.FC = () => {
   let expiredList = null;
   if (sortedExpiredTasks.length > 0) {
     expiredList = sortedExpiredTasks.map((yearBox) => (
-      <li>
+      <li key={yearBox.year}>
         <OuterCard yearBox={yearBox} expired={true} />
       </li>
     ));

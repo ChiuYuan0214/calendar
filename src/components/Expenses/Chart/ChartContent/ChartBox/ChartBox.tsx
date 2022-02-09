@@ -16,35 +16,58 @@ const ChartBox: React.FC<{
 
   const scale = [];
   for (let i = 0; i < 10; i++) {
-    scale.push(<div></div>);
+    scale.push(<div key={i}></div>);
   }
 
   const sideBar = <div className={styles.sidebar}>{scale}</div>;
-  const fillHeight = `${(num / maxVal) * 100}%`;
+  const fillHeight = num ? `${(num / maxVal) * 100}%` : 0;
   const fillOpacity = `${num / maxVal}`;
 
-  useEffect(() => {
-    if (isStart) {
-      setIsStart(false);
-      setIsFill(false);
-    }
-    if (year && month && sort) {
-      setTimeout(() => {
-        setIsStart(true);
-      }, index * 30);
-    }
-  }, [year, month, sort]);
+  // useEffect(() => {
+  //   let timer: ReturnType<typeof setTimeout> | null = null;
+  //   if (isStart) {
+  //     setIsStart(false);
+  //     setIsFill(false);
+  //   }
+  //   if (year && month && sort) {
+  //     timer = setTimeout(() => {
+  //       setIsStart(true);
+  //     }, index * 30);
+  //   }
+  //   return () => {
+  //     if (timer) {
+  //       clearTimeout(timer);
+  //     }
+  //   };
+  // }, [year, month, sort, index]);
 
   useEffect(() => {
+    const timer: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setIsStart(true);
+    }, index * 30);
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [index]);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
     if (isStart) {
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setIsFill(true);
       }, 10);
     }
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, [isStart]);
 
   return (
-    <div className={styles.box} style={{width: `${100 / colNum}%`}}>
+    <div className={styles.box} style={{ width: `${100 / colNum}%` }}>
       {sideBar}
       <div className={styles.bar}>
         <div
