@@ -28,8 +28,6 @@ const ExpenseList: React.FC<{
     inform = `Expenses in ${year} - ${month}`;
   }
 
-  console.log("list rendered!");
-
   useEffect(() => {
     setIsFade(true);
     setTimeout(() => {

@@ -26,11 +26,12 @@ const ChartBox: React.FC<{
   useEffect(() => {
     if (isStart) {
       setIsStart(false);
+      setIsFill(false);
     }
     if (year && month && sort) {
       setTimeout(() => {
         setIsStart(true);
-      }, index * 50);
+      }, index * 30);
     }
   }, [year, month, sort]);
 
@@ -38,9 +39,7 @@ const ChartBox: React.FC<{
     if (isStart) {
       setTimeout(() => {
         setIsFill(true);
-      }, 50);
-    } else {
-      setIsFill(false);
+      }, 10);
     }
   }, [isStart]);
 

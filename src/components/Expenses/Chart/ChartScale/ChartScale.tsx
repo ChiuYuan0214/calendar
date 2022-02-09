@@ -6,9 +6,6 @@ const ChartScale: React.FC<{ maxVal: number }> = ({ maxVal }) => {
   const valueList: number[] = [];
   const partion = Math.floor(maxVal / 10);
 
-  console.log("maxVal:", maxVal);
-  console.log("partion:", partion);
-
   let counter = partion;
   while (counter < maxVal) {
     valueList.push(counter);
@@ -16,7 +13,7 @@ const ChartScale: React.FC<{ maxVal: number }> = ({ maxVal }) => {
   }
   valueList.push(maxVal);
 
-  const scaleColumn = valueList.reverse().map((val) => <li>{val ? val : ""}</li>);
+  const scaleColumn = valueList.reverse().map((val,idx) => <li key={idx}>{val ? val : ""}</li>);
 
   return <ul className={styles.scale}>{scaleColumn}</ul>;
 };

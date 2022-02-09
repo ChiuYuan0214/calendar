@@ -22,7 +22,7 @@ const ChartTitle: React.FC<{ sort: string; year: number; barNum: number }> = ({
 
   const titleStyle = {width: `${100 / barNum}%`};
 
-  const list = titleList.map((title) => <li style={titleStyle}>{title}</li>);
+  const list = titleList.map((title,idx) => <li key={idx} style={titleStyle}>{title}</li>);
 
   return <ul className={styles.list}>{list}</ul>;
 };

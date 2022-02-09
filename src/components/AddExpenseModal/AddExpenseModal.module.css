@@ -1,15 +1,62 @@
 .modal {
   position: fixed;
-  width: 450px;
-  height: 250px;
-  top: calc(50% - 125px);
-  left: calc(50% - 225px);
-  background-color: white;
+  width: 480px;
+  height: 480px;
+  top: calc(50% - 240px);
+  left: calc(50% - 240px);
+  background-color: rgba(255, 255, 255, 0.959);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   z-index: 10;
-  padding: 1.3rem 1.5rem;
+  padding: 1.7rem 2rem;
+}
+
+.modal > h1 {
+  color: rgb(22, 22, 95);
+  margin-top: .3rem;
+}
+
+.control {
+  margin-bottom: .7rem;
+}
+
+.control label,
+.control input,
+.control textarea {
+  display: block;
+  outline: none;
+}
+
+.control label,
+.control input {
+  width: 10rem;
+}
+
+.control input,
+.control textarea {
+  padding: .2rem .5rem;
+  border: none;
+  border-bottom: 1px dotted rgb(22, 22, 95);
+}
+
+.control label {
+  margin-bottom: .3rem;
+  font-weight: bold;
+  color: rgb(22, 22, 95);
+}
+
+.control textarea {
+  width: 17rem;
+}
+
+
+.inline {
+  display: flex;
+}
+
+.inline div:first-of-type {
+  margin-right: 1rem;
 }
 
 .actions {
@@ -21,11 +68,12 @@
 .actions button {
   padding: 0.3rem 0.7rem;
   border-radius: 4px;
-  border: 1px solid blue;
-  color: blue;
+  border: 1px solid rgb(22, 22, 95);
+  color: rgb(22, 22, 95);
   background-color: white;
   font-weight: bold;
   transition: all .3s;
+  width: 4rem;
 }
 
 .actions button:last-of-type {
@@ -33,6 +81,6 @@
 }
 
 .actions button:hover {
-  background-color: blue;
+  background-color: rgb(22, 22, 95);
   color: white;
 }
