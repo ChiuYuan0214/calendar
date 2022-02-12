@@ -10,8 +10,9 @@ const WeekTitle: React.FC<{ isExpand: boolean }> = ({isExpand}) => {
     day,
     index,
   }) => {
+    // style={{ backgroundColor: `hsl(${200 + index * 20}, 100%, 70%)` }}
     return (
-      <li style={{ backgroundColor: `hsl(${200 + index * 20}, 100%, 70%)` }}>
+      <li>
         <h3>{day}</h3>
       </li>
     );

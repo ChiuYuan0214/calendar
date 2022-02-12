@@ -1,29 +1,42 @@
 .titleBar {
-    list-style-type: none;
-    text-decoration: none;
-    padding: 1rem .5rem 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    width: 100%;
-    transition: width .5s ease-out;
+  list-style-type: none;
+  text-decoration: none;
+  padding: 1rem 0.5rem 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  transition: width 0.5s ease-out;
 }
 
 .titleBar h3 {
-    font-family: monospace;
-    margin: 0;
-    text-align: center;
-    padding: .75rem .5rem;
+  font-family: monospace;
+  margin: 0;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  color: rgb(139, 168, 196);
+}
+
+.titleBar li {
+  display: block;
+  background-color: rgb(13, 26, 37);
+  border: 1px solid rgb(33, 70, 104);
+}
+
+.titleBar li:not(:first-of-type) {
+  border-left: 1px solid rgb(13, 26, 37);
 }
 
 .titleBar li:first-of-type {
-    border-radius: 25px 0 0 25px;
+  /* border-radius: 25px 0 0 25px; */
+  border-radius: 2px 0 0 2px;
 }
 
 .titleBar li:last-of-type {
-    border-radius: 0 25px 25px 0;
+  /* border-radius: 0 25px 25px 0; */
+  border-radius: 0 2px 2px 0;
 }
 
 .titleBar.isExpand {
-    width: calc(100% - 3rem);
+  width: calc(100% - 3rem);
 }

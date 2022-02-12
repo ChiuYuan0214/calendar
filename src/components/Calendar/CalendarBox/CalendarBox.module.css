@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
-  border: 1px solid rgb(165, 164, 164);
-  background-color: white;
+  /* border-radius: 4px; */
+  border: 1px solid rgb(33, 70, 104);
+  background-color: rgb(165, 184, 202);
   overflow: hidden;
 }
 
@@ -13,25 +13,30 @@
   width: 100%;
   height: 1.5rem;
   margin: 0;
-  background-color: rgb(165, 164, 164);
-  color: rgb(59, 58, 58);
+  background-color: rgb(69, 110, 148); /* old: rgb(165, 164, 164) */
+  color: rgb(33, 70, 104);
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   line-height: 1.4;
-  border-radius: 3px 3px 0 0;
+  /* border-radius: 3px 3px 0 0; */
 }
 
 .weekendBox {
-  background-color: rgb(251, 228, 153);
+  background-color: rgb(207, 218, 230); /* old: rgb(251, 228, 153) */
 }
 
 .weekendBox:not(.empty) h3 {
-  background-color: rgb(245, 209, 91);
+  background-color: rgb(139, 168, 196); /* old: rgb(245, 209, 91) */
 }
 
 .empty {
-  background-color: rgb(209, 208, 208);
+  background-color: rgb(13, 26, 37);
+  border-color: transparent;
+}
+
+.box.empty h3 {
+  background-color: rgb(7, 15, 22);
 }
 
 .onDrop {
