@@ -28,6 +28,8 @@ const SelectBar: React.FC<{
   isExpenses,
 }) => {
   const [addMemo, setAddMemo] = useState(false);
+
+  // input value state.
   const [yearInput, setYearInput] = useState("2022");
   const [monthInput, setMonthInput] = useState("2");
 
@@ -35,19 +37,23 @@ const SelectBar: React.FC<{
     setAddMemo((prev) => !prev);
   };
 
+  // change the year state in App.tsx from here.
   const yearChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYearInput(event.target.value);
     toggleTodo(false);
   };
 
+  // change the month state in App.tsx from here.
   const monthChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonthInput(event.target.value);
     toggleTodo(false);
   };
 
+  // set the states "year" and "month" in parent component to local input values.
   useEffect(() => {
+    // lock the input values.
     const userPrevInput = { yearInput, monthInput };
-
+    // compare current input value to values 500ms before.
     const timer = setTimeout(() => {
       if (
         yearInput === userPrevInput.yearInput &&

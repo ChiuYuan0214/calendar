@@ -25,6 +25,7 @@ const MemoForm: React.FC<{
 
   const ctx = useContext(TasksContext);
 
+  // form input refs
   const titleRef: RefObject<HTMLInputElement> = useRef(null);
   const descRef: RefObject<HTMLTextAreaElement> = useRef(null);
   const levelRef: RefObject<HTMLSelectElement> = useRef(null);
@@ -33,6 +34,7 @@ const MemoForm: React.FC<{
   const dateRef: RefObject<HTMLInputElement> = useRef(null);
 
   // function scope
+  // auto set the alertDate whenever the date has changed.
   const dateChangeHandler = useCallback(() => {
     if (alertManual) {
       return;
@@ -44,10 +46,13 @@ const MemoForm: React.FC<{
 
     let alertDate = date - 1;
     let alertMonth = month;
+    // when the alertDate should be the last day of previous month.
     if (alertDate === 0) {
       alertDate = createLength(month - 2, (year - 2020) % 4 === 0);
       alertMonth--;
     }
+
+    // if the number is smaller than 10, should put a "0" in front of it.
     const monthSmaller = alertMonth < 10;
     const dateSmaller = alertDate < 10;
 
@@ -57,6 +62,7 @@ const MemoForm: React.FC<{
   }, [alertManual]);
   // function end
 
+  // once the alert input has changed, set alertManual to true to stop auto-adjusting.
   const alertChangeHandler = () => {
     if (alertManual) {
       return;
@@ -64,6 +70,7 @@ const MemoForm: React.FC<{
     setAlertManual(true);
   };
 
+  // auto set the value of date input only after first rendering.
   useEffect(() => {
     if (initial) {
       const smaller = month < 10;
@@ -74,6 +81,7 @@ const MemoForm: React.FC<{
     }
   }, [year, month, date, initial]);
 
+  // why does tis useEffect exist???
   useEffect(() => {
     dateChangeHandler();
   }, [dateChangeHandler]);
@@ -102,8 +110,8 @@ const MemoForm: React.FC<{
       month,
       date
     );
-
     ctx.addTask(newTask);
+    
     titleRef.current!.value = "";
     descRef.current!.value = "";
     levelRef.current!.value = "";

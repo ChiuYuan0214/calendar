@@ -12,34 +12,34 @@
 }
 
 .actions button {
-  padding: .5rem 1rem;
-  margin : 0 0 0 2rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0 0 2rem;
   min-width: 8rem;
   font-family: monospace;
   font-size: 1rem;
   font-weight: bold;
   background-color: rgb(163, 93, 228);
-  color:rgb(98, 11, 179);
+  color: rgb(98, 11, 179);
   opacity: 0.7;
   border: none;
   border-radius: 4px;
-  outline: none;
+  outline: 0;
 }
 
 .calenBtn button:first-of-type {
-  background-color:rgb(59, 160, 243);
-  color:rgb(27, 81, 112);
+  background-color: rgb(59, 160, 243);
+  color: rgb(27, 81, 112);
 }
 
 .actions button:nth-of-type(2) {
-  background-color:rgb(218, 108, 108);
-  color:rgb(129, 9, 9);
+  background-color: rgb(218, 108, 108);
+  color: rgb(129, 9, 9);
   margin-left: 1rem;
 }
 
 .actions button.switch {
-  background-color:rgb(14, 13, 13);
-  color:rgb(190, 181, 181);
+  background-color: rgb(14, 13, 13);
+  color: rgb(190, 181, 181);
   margin-left: 1rem;
 }
 
@@ -83,5 +83,5 @@
 }
 
 .inputControl:last-of-type input {
-    width: 4rem;
+  width: 4rem;
 }

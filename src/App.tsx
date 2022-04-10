@@ -8,17 +8,26 @@ import AddExpenseModal from "./components/AddExpenseModal/AddExpenseModal";
 
 import ExpensesContext from "./store/expenses-context";
 
+import styles from "./App.module.css";
+
 const App: React.FC = () => {
+  // selected date.
   const [year, setYear] = useState<number>(2022);
   const [month, setMonth] = useState<number>(2);
+
+  // state logic below really need to be enhanced....
+  // todoList tab.
   const [isTodoList, setIsTodoList] = useState<boolean>(false);
+
+  // expenses page.
   const [isExpenses, setIsExpenses] = useState<boolean>(false);
+
+  // Chart tab of expenses page.
   const [isChart, setIsChart] = useState<boolean>(false);
   const [addExpense, setAddExpense] = useState(false);
   const [expenseIsChange, setExpenseIsChange] = useState<boolean>(false);
 
-  const ctx = useContext(ExpensesContext);
-  const expenses = ctx.expenses;
+  const { expenses } = useContext(ExpensesContext);
 
   const changeYearHandler = (year: number) => {
     setYear(year);
@@ -28,6 +37,7 @@ const App: React.FC = () => {
     setMonth(month);
   };
 
+  // close the todolist after clicking for 550ms delay.
   const toggleTodoListHandler = (isToggle: boolean) => {
     if (isToggle) {
       setIsTodoList((prev) => !prev);
@@ -69,7 +79,7 @@ const App: React.FC = () => {
   }, [expenseIsChange]);
 
   return (
-    <section>
+    <section className={styles.container}>
       <SelectBar
         year={year}
         month={month}

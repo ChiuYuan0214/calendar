@@ -14,6 +14,8 @@ const AddExpenseModal: React.FC<{
 }> = ({ toggleAdding, year, month }) => {
   const AddExpenseModal: React.FC = () => {
     const ctx = useContext(ExpensesContext);
+
+    // input value states.
     const [title, setTitle] = useState<string>("");
     const [amount, setAmount] = useState<string>("");
     const [tag, setTag] = useState<string>("");
