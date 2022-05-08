@@ -32,9 +32,7 @@ export class Task {
       "_" +
       this.title +
       "_" +
-      this.tag +
-      "_" +
-      this.level +
+      this.desc +
       "_" +
       this.date;
   }

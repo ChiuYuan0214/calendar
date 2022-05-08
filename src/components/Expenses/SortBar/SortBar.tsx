@@ -2,11 +2,12 @@ import React, { ChangeEvent } from "react";
 
 import styles from "./SortBar.module.css";
 
-const SortBar: React.FC<{
+interface Props {
   setSort: (option: string) => void;
   sort: string;
-}> = ({ setSort, sort }) => {
+}
 
+const SortBar: React.FC<Props> = ({ setSort, sort }) => {
   const selectChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
     setSort(event.target.value);
   };

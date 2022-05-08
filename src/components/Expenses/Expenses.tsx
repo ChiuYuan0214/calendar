@@ -10,15 +10,24 @@ import ExpenseList from "./ExpenseList/ExpenseList";
 
 import styles from "./Expenses.module.css";
 
-const Expenses: React.FC<{
+interface Props {
   chart: boolean;
   year: number;
   month: number;
   expenses: Expense[];
   setChange: () => void;
-}> = ({ chart, year, month, expenses, setChange }) => {
+}
+
+const Expenses: React.FC<Props> = ({
+  chart,
+  year,
+  month,
+  expenses,
+  setChange,
+}) => {
   const [sort, setSort] = useState<string>("SORT_DAY");
 
+  // switch between 'sort by day', 'sort by month' and 'sort by year'.
   const setSortHandler = (option: string) => {
     setSort(option);
   };
@@ -58,7 +67,12 @@ const Expenses: React.FC<{
           />
         </section>
       </CSSTransition>
-      <ExpenseList year={year} month={month} expenses={filteredExpenses} setChange={setChange} />
+      <ExpenseList
+        year={year}
+        month={month}
+        expenses={filteredExpenses}
+        setChange={setChange}
+      />
     </section>
   );
 };

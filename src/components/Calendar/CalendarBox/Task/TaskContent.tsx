@@ -6,12 +6,14 @@ import StringReducer from "../../../UI/StringReducer/StringReducer";
 
 import styles from "./TaskContent.module.css";
 
-const TaskContent: React.FC<{
+interface Props {
   task: Task;
   index: number;
   isExpand: boolean;
   setChange: () => void;
-}> = ({ task, index, isExpand, setChange }) => {
+};
+
+const TaskContent: React.FC<Props> = ({ task, index, isExpand, setChange }) => {
   const [onModal, setOnModal] = useState<boolean>(false);
 
   const { title, desc, level, tag, id } = task;
@@ -24,11 +26,14 @@ const TaskContent: React.FC<{
     setOnModal(true);
   };
 
+  // set the id to event data when drag event was fired.
   const dragStartHandler = (event: DragEvent<HTMLLIElement>) => {
     event.dataTransfer.setData("text/plain", id);
     event.dataTransfer.effectAllowed = "move";
   };
 
+  // alert user when drag event was over (element was dropped) but no drop effect appeared.
+  // equal to drop failed.
   const dragEndHandler = (event: DragEvent<HTMLLIElement>) => {
     if (event.dataTransfer.dropEffect === "none") {
       alert("Please drag into right place!");

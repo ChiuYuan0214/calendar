@@ -19,8 +19,11 @@ const ChartBox: React.FC<{
     scale.push(<div key={i}></div>);
   }
 
+  // to create styling scale bar on each side.
   const sideBar = <div className={styles.sidebar}>{scale}</div>;
+  // determine the fill height based on percentage relative to max value.
   const fillHeight = num ? `${(num / maxVal) * 100}%` : 0;
+  // determine the background-color opacity as above.
   const fillOpacity = `${num / maxVal}`;
 
   // useEffect(() => {
@@ -41,6 +44,7 @@ const ChartBox: React.FC<{
   //   };
   // }, [year, month, sort, index]);
 
+  // set the delay time of 30ms to each chart. (for fill-up animation)
   useEffect(() => {
     const timer: ReturnType<typeof setTimeout> = setTimeout(() => {
       setIsStart(true);
@@ -52,6 +56,7 @@ const ChartBox: React.FC<{
     };
   }, [index]);
 
+  // set the style for each chart when isStart.
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;
     if (isStart) {

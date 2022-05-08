@@ -12,8 +12,11 @@
   z-index: 10;
   width: 500px;
   height: 500px;
-  top: calc(50% - 250px);
-  left: calc(50% - 250px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* top: calc(50% - 250px);
+  left: calc(50% - 250px); */
   font-size: 1.5rem;
   animation: fade-in .5s;
   animation-fill-mode: forwards;

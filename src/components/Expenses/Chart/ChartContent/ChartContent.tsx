@@ -4,13 +4,15 @@ import ChartBox from "./ChartBox/ChartBox";
 
 import styles from "./ChartContent.module.css";
 
-const ChartContent: React.FC<{
+interface Props {
   numList: number[];
   maxVal: number;
   sort: string;
   year: number;
   month: number;
-}> = ({ numList, maxVal, sort, year, month }) => {
+};
+
+const ChartContent: React.FC<Props> = ({ numList, maxVal, sort, year, month }) => {
   const contents = numList.map((num, index) => (
     <ChartBox
       key={index}

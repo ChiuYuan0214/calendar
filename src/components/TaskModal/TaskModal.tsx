@@ -8,8 +8,10 @@ import { levelList } from "../../lib/option";
 
 import styles from "./TaskModal.module.css";
 
+// type of action to dispatch.
 type InputAction = { type: string; input: string | number };
 
+// type of inputs change state.
 type ChangeState = {
   title: boolean;
   desc: boolean;
@@ -28,6 +30,7 @@ const initialChangeState: ChangeState = {
   tag: false,
 };
 
+// merge the new value into inputs value state.
 const inputReducer = (state: Task, action: InputAction) => {
   return { ...state, [action.type]: action.input };
 };
@@ -50,6 +53,7 @@ const TaskModal: React.FC<{
     changeReducer,
     initialChangeState
   );
+  // extract values from initial value of reducer. ( which was received from user data )
   const { title, desc, level, year, month, date, alertTime, tag } = inputState;
 
   const alertObj = new Date(alertTime);
@@ -57,10 +61,12 @@ const TaskModal: React.FC<{
   const alertMonth = alertObj.getMonth() + 1;
   const alertDate = alertObj.getDate();
 
+  // dispatch new value whenever input value has changed.
   const inputChangeHandler = (type: string, event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
     let inputValue = target.value;
 
+    // adjust value format if the input was "time".
     if (type === "date") {
       const dateObj = new Date(inputValue);
       const year = dateObj.getFullYear();
@@ -79,22 +85,27 @@ const TaskModal: React.FC<{
     dispatchInput({ type, input: inputValue });
   };
 
+  // set the change state to true when user double clicked on input.
   const startEditHandler = (type: string, event: MouseEvent) => {
     event.stopPropagation();
     dispatchChange({ type });
   };
 
+  // sync local input values to store when user blurred.
   const blurHandler = () => {
     const updatedState = { ...inputState };
     ctx.updateTask(updatedState);
     setChange();
   };
 
+  // deleted this data in store and close the modal.
   const removeTaskHandler = () => {
     ctx.removeTask(task.id);
     onClick();
   };
 
+  // check the mouse click event, no action if it's within input field.
+  // but clear all the change state if it's outside of input field.
   const clearFocusHandler = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
     if (
@@ -107,6 +118,7 @@ const TaskModal: React.FC<{
     if (target.closest("div")) dispatchChange({ type: "clear" });
   };
 
+  // prevent propagating double click event from this modal to calendar.
   const stopPropagationHandler = (event: MouseEvent) => {
     event.stopPropagation();
   };
@@ -168,7 +180,9 @@ const TaskModal: React.FC<{
             <option value="5">Hell</option>
           </select>
         ) : (
-          <p onDoubleClick={startEditHandler.bind(null, "level")}>{levelList[+level - 1]}</p>
+          <p onDoubleClick={startEditHandler.bind(null, "level")}>
+            {levelList[+level - 1]}
+          </p>
         )}
       </div>
       <div className={styles.mark}>

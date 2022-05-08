@@ -6,15 +6,19 @@ import ExpenseItem from "./ExpenseItem/ExpenseItem";
 
 import styles from "./ExpenseList.module.css";
 
-const ExpenseList: React.FC<{
+interface Props {
   expenses: Expense[];
   year: number;
   month: number;
   setChange: () => void;
-}> = ({ expenses, year, month, setChange }) => {
+};
+
+const ExpenseList: React.FC<Props> = ({ expenses, year, month, setChange }) => {
   const [isFade, setIsFade] = useState<boolean>(false);
 
   let contents = null;
+
+  // set content to expense item if data was not empty.
   if (expenses.length > 0) {
     const sortedExpenses = expenses.sort((a: Expense, b: Expense) =>
       a.date > b.date ? -1 : 1
@@ -24,11 +28,13 @@ const ExpenseList: React.FC<{
     ));
   }
 
+  // to create topmost information of this component.
   let inform = `No expenses in ${year} - ${month}`;
   if (contents) {
     inform = `Expenses in ${year} - ${month}`;
   }
 
+  // auto toggle the fade-in animation whenever 'year' and 'month' has changed.
   useEffect(() => {
     setIsFade(true);
     const timer = setTimeout(() => {

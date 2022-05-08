@@ -2,7 +2,13 @@ import React from "react";
 
 import styles from "./ChartTitle.module.css";
 
-const ChartTitle: React.FC<{ sort: string; year: number; barNum: number }> = ({
+interface Props {
+  sort: string;
+  year: number;
+  barNum: number;
+};
+
+const ChartTitle: React.FC<Props> = ({
   year,
   sort,
   barNum,

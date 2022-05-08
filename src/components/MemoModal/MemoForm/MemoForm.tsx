@@ -14,12 +14,14 @@ import { createLength } from "../../../lib/date";
 
 import styles from "./MemoForm.module.css";
 
-const MemoForm: React.FC<{
+interface Props {
   onClose: () => void;
   year: number;
   month: number;
   date: number;
-}> = ({ onClose, year, month, date }) => {
+};
+
+const MemoForm: React.FC<Props> = ({ onClose, year, month, date }) => {
   const [initial, setInitial] = useState(true);
   const [alertManual, setAlertManual] = useState(false);
 
@@ -118,6 +120,7 @@ const MemoForm: React.FC<{
     tagRef.current!.value = "";
     onClose();
   };
+  
   return (
     <form className={styles.form} onSubmit={submitHandler}>
       <div className={styles.control}>

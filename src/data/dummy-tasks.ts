@@ -12,8 +12,8 @@ export const DUMMY_TASK_DATA = [
     11
   ),
   new Task(
-    "A job interview",
-    "need to get more time to prepare",
+    "A job interview12",
+    "If you're not sure where to get started, take a look at the following categories",
     "4",
     "learning",
     1644392700892,
@@ -22,7 +22,7 @@ export const DUMMY_TASK_DATA = [
     6
   ),
   new Task(
-    "A job interview",
+    "A job interview33",
     "need to get more time to prepare",
     "4",
     "friends",
@@ -33,7 +33,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "If you're not sure where to get started, take a look at the following categories",
     "1",
     "friends",
     1644392502982,
@@ -43,7 +43,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare14",
     "2",
     "family",
     1644392770892,
@@ -52,7 +52,7 @@ export const DUMMY_TASK_DATA = [
     28
   ),
   new Task(
-    "A job interview",
+    "A job interview3",
     "need to get more time to prepare",
     "2",
     "work",
@@ -63,7 +63,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare25",
     "1",
     "entertainment",
     1644392850892,
@@ -72,7 +72,7 @@ export const DUMMY_TASK_DATA = [
     29
   ),
   new Task(
-    "A job interview",
+    "A job interview1",
     "need to get more time to prepare",
     "3",
     "entertainment",
@@ -83,7 +83,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "If you're not sure where to get started, take a look at the following categories",
     "3",
     "friends",
     1644392000892,
@@ -93,7 +93,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare5566",
     "4",
     "family",
     1644395000892,
@@ -103,7 +103,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare12314",
     "4",
     "work",
     1644392000892,
@@ -113,7 +113,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to preparesdfb",
     "4",
     "learning",
     1644392700892,
@@ -123,7 +123,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to preparesdgfbwr",
     "4",
     "friends",
     1644392000892,
@@ -132,7 +132,7 @@ export const DUMMY_TASK_DATA = [
     10
   ),
   new Task(
-    "A job interview",
+    "A job interviewaef",
     "need to get more time to prepare",
     "1",
     "friends",
@@ -143,7 +143,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to preparesdfb",
     "2",
     "family",
     1644392770892,
@@ -153,7 +153,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepareaefrtbwertb",
     "2",
     "work",
     1644393040892,
@@ -163,7 +163,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "You can find them all in the left sidebar (or menu above, if you are on a narrow screen). ",
     "1",
     "entertainment",
     1644392850892,
@@ -173,7 +173,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "You can find them all in the left sidebar (or menu above. ",
     "3",
     "entertainment",
     1644392500892,
@@ -193,7 +193,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare33345",
     "4",
     "family",
     1644395000892,
@@ -203,7 +203,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "You can find them all in the left sidebar (or menu above, if you are on a narrow screen). wqerg",
     "4",
     "friends",
     1644392000892,
@@ -213,7 +213,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "You can find them all in the left sidebar (or menu above, if you are on a narrow screen). You can find them all in the left sidebar (or menu above, if you are on a narrow screen). ",
     "1",
     "friends",
     1644392502982,
@@ -223,7 +223,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare. You can find them all in the left sidebar (or menu above, if you are on a narrow screen). ",
     "2",
     "family",
     1644392770892,
@@ -233,7 +233,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepare33333",
     "2",
     "work",
     1644393040892,
@@ -243,7 +243,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time to prepareadefhqertn",
     "1",
     "entertainment",
     1644392850892,
@@ -253,7 +253,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more eqrgwrtbntime to prepare",
     "3",
     "entertainment",
     1644392500892,
@@ -263,7 +263,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more time aewfrbto prepare",
     "3",
     "friends",
     1644392000892,
@@ -273,7 +273,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to getasfbqewrtnbrw more time to prepare",
     "4",
     "family",
     1644395000892,
@@ -283,7 +283,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more timeswerfgb to prepare",
     "4",
     "family",
     1644395000892,
@@ -293,7 +293,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to get more timeadsfbvb to prepare",
     "1",
     "entertainment",
     1644392850892,
@@ -303,7 +303,7 @@ export const DUMMY_TASK_DATA = [
   ),
   new Task(
     "A job interview",
-    "need to get more time to prepare",
+    "need to getsefbb more time to prepare",
     "3",
     "entertainment",
     1644392500892,

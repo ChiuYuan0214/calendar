@@ -2,8 +2,11 @@
   position: fixed;
   width: 480px;
   height: 480px;
-  top: calc(50% - 240px);
-  left: calc(50% - 240px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* top: calc(50% - 240px);
+  left: calc(50% - 240px); */
   background-color: rgba(255, 255, 255, 0.959);
   border-radius: 4px;
   display: flex;

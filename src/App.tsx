@@ -52,6 +52,7 @@ const App: React.FC = () => {
     setAddExpense((prev) => !prev);
   };
 
+  // toggle between expenses page and calendar page.
   const toggleExpensesHandler = () => {
     setIsExpenses((prev) => !prev);
   };
@@ -64,6 +65,8 @@ const App: React.FC = () => {
     setExpenseIsChange(true);
   };
 
+  // if is on expenses page, turn the todo-list to unshown.
+  // if is on calendar page, turn the chart to unshown.
   useEffect(() => {
     if (isExpenses) {
       setIsTodoList(false);
@@ -72,6 +75,7 @@ const App: React.FC = () => {
     }
   }, [isExpenses]);
 
+  // auto reset change state.
   useEffect(() => {
     if (expenseIsChange) {
       setExpenseIsChange(false);

@@ -7,11 +7,13 @@ import ExpensesContext from "../../store/expenses-context";
 
 import styles from "./AddExpenseModal.module.css";
 
-const AddExpenseModal: React.FC<{
+interface Props {
   toggleAdding: () => void;
   year: number;
   month: number;
-}> = ({ toggleAdding, year, month }) => {
+}
+
+const AddExpenseModal: React.FC<Props> = ({ toggleAdding, year, month }) => {
   const AddExpenseModal: React.FC = () => {
     const ctx = useContext(ExpensesContext);
 
@@ -51,7 +53,7 @@ const AddExpenseModal: React.FC<{
 
     const submitHandler = (event: FormEvent) => {
       event.preventDefault();
-      if (!title.trim()||isNaN(+amount)||!tag.trim()) {
+      if (!title.trim() || isNaN(+amount) || !tag.trim()) {
         alert("Please fill in title, amount and tag in right format.");
         return;
       }
@@ -134,7 +136,9 @@ const AddExpenseModal: React.FC<{
           />
         </div>
         <div className={styles.actions}>
-          <button type="button" onClick={toggleAdding}>Close</button>
+          <button type="button" onClick={toggleAdding}>
+            Close
+          </button>
           <button type="submit">Add</button>
         </div>
       </form>

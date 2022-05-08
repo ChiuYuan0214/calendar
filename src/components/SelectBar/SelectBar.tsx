@@ -4,7 +4,8 @@ import MemoModal from "../MemoModal/MemoModal";
 
 import styles from "./SelectBar.module.css";
 
-const SelectBar: React.FC<{
+
+interface Props {
   changeYear: (year: number) => void;
   changeMonth: (month: number) => void;
   toggleTodo: (isToggle: boolean) => void;
@@ -15,7 +16,9 @@ const SelectBar: React.FC<{
   month: number;
   isTodo: boolean;
   isExpenses: boolean;
-}> = ({
+};
+
+const SelectBar: React.FC<Props> = ({
   changeYear,
   changeMonth,
   toggleTodo,
