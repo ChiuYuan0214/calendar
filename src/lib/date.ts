@@ -61,7 +61,7 @@ export const createStartDay = (startDayIndex: number, isLeap: boolean) => {
     x + 5,
   ];
   if (isLeap) {
-    for (let i = 1; i < 12; i++) {
+    for (let i = 2; i < 12; i++) {
       startDayList[i] = startDayList[i] + 1;
     }
   }
@@ -141,7 +141,11 @@ export const convertIntoTime = (year: number, month: number, date: number) => {
   return timeNum;
 };
 
-export const convertIntoString = (year: number, month: number, date: number) => {
+export const convertIntoString = (
+  year: number,
+  month: number,
+  date: number
+) => {
   const dateString = `${year}-${month < 10 ? "0" : ""}${month}-${
     date < 10 ? "0" : ""
   }${date}`;

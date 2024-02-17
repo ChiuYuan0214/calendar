@@ -12,9 +12,16 @@ interface Props {
   month: number;
   rowBox: TaskBox[];
   index: number;
-};
+}
 
-const CalendarRow: React.FC<Props> = ({ year, month, rowBox, index, expandWeek, setExpand }) => {
+const CalendarRow: React.FC<Props> = ({
+  year,
+  month,
+  rowBox,
+  index,
+  expandWeek,
+  setExpand,
+}) => {
   const rowIndex = index;
   const isExpand = expandWeek === rowIndex;
 
@@ -48,8 +55,8 @@ const CalendarRow: React.FC<Props> = ({ year, month, rowBox, index, expandWeek, 
 
   return (
     <CSSTransition
-    // only shrink out when calendar is expanding but not this row.
-    // vice versa.
+      // only shrink out when calendar is expanding but not this row.
+      // vice versa.
       in={expandWeek !== null && !isExpand}
       timeout={animationTiming}
       classNames={{

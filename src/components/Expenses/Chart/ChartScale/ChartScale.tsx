@@ -13,7 +13,7 @@ const ChartScale: React.FC<{ maxVal: number }> = ({ maxVal }) => {
       counter += partion;
     }
   } else {
-    valueList.push(0)
+    valueList.push(0);
   }
 
   const scaleColumn = valueList

@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 
 import ExpensesContext from "../../../store/expenses-context";
 import { Expense } from "../../../models/Expense";
@@ -15,7 +15,7 @@ interface Props {
   month: number;
   sort: string;
   expenses: Expense[];
-};
+}
 
 const Chart: React.FC<Props> = ({ sort, year, month, expenses }) => {
   const ctx = useContext(ExpensesContext);

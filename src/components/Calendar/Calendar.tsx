@@ -12,7 +12,7 @@ import styles from "./Calendar.module.css";
 interface Props {
   year: number;
   month: number;
-};
+}
 
 const Calendar: React.FC<Props> = ({ year, month }) => {
   const [expandWeek, setExpandWeek] = useState<number | null>(null);
@@ -20,8 +20,6 @@ const Calendar: React.FC<Props> = ({ year, month }) => {
 
   // create table of the month by startDay and length.
   const table = getCalendarTable(startDay, length);
-
-
   // specify the expanded row by row number.
   const expandWeekHandler = (row: number | null) => {
     setExpandWeek(row);
